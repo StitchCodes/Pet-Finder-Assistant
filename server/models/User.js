@@ -8,6 +8,8 @@ const userSchema = new Schema({
     // LAST NAME
     // PHONE #
     // PASSWORD
+    // POSTS
+    // COMMENTS
 });
 
 
