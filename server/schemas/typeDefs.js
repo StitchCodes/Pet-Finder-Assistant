@@ -48,10 +48,11 @@ const typeDefs = gql `
     }
 
     type Mutation {
-        addPost
-        removePost
         createUser
         login
+        addPost
+        removePost
+        addComment
     }
     `;
 
