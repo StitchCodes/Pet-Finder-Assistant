@@ -8,7 +8,7 @@ const typeDefs = gql `
         name: String
     }
     
-    type Pet {
+    type pet {
         _id: ID
         petName: String
         petSpecies: String
@@ -17,17 +17,18 @@ const typeDefs = gql `
         petDesc: String
         petDateLF: Date
         petStatus: Boolean
-        petLocation: String
         petPhoto: String
         petReward: Number
         petComments: [Posts]
     }
 
-    type Posts {
+    type Placard {
         _id: ID
-        postText: String
-        postAuthor: String
+        placardText: String
+        placardAuthor: String
         createdAt: String
+        placardPet: [ Pet ]
+        location
         comments: [Comment]
     }
 
@@ -44,15 +45,17 @@ const typeDefs = gql `
     }
 
     type Query { 
-        
+        User
+        Placard
+        Pet
     }
 
     type Mutation {
         createUser
-        login
-        addPost
-        removePost
-        addComment
+        login(email: String!, password: String!): Auth
+        addPlacard(placardText: String!): Placard
+        removePlacard(PlacardId: ID!): Placard
+        addComment(Placard: ID, commentText: String!): Placard
     }
     `;
 
