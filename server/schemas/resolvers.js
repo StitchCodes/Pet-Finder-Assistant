@@ -10,8 +10,7 @@ const resolvers = {
     Mutation: {
         addPlacard: async (parent, { placardText }, context) => {
             if(context.user) {
-                const placard = await Placard.create({
-                    placardText, 
+                const placard = await Placard.create({ 
                     Pet,
                     placardAuthor: context.user.nickname
                 });

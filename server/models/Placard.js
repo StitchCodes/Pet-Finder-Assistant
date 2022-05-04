@@ -4,12 +4,6 @@ const dateFormat = require('../utils/dateFormat');
 
 // Placard Model Definition
 const placardSchema = new Schema({
-    placardText: {
-        type: String,
-        minlength: 1,
-        maxlength: 280,
-        trim: true,
-    },
     placardAuthor: {
         type: String,
         required: true,
