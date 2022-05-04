@@ -23,16 +23,14 @@ const typeDefs = gql `
         petStatus: Boolean
         petPhoto: String
         petReward: Number
-        petComments: [Posts]
     }
 
     type Placard {
         _id: ID
-        placardText: String
         placardAuthor: String
-        createdAt: String
-        placardPet: [ Pet ]
-        location
+        createdAt: Date
+        placardPet: [ pet ]
+        location: String
         comments: [Comment]
     }
 
@@ -40,7 +38,7 @@ const typeDefs = gql `
         _id: ID
         commentText: String
         commentAuthor: String
-        createdAt: String
+        createdAt: Date
     }
 
     type Auth {
@@ -56,9 +54,9 @@ const typeDefs = gql `
         addUser(email: String!, nickname: String, name:String!, lastname:String, phone: String!, password: String!): Auth
         updateUser(nickname: String, name:String!, lastname:String, phone: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
-        addPlacard(placardText: String!): Placard
+        addPlacard(placardAuthor: String!, createdAt: String!, location: String!, petName: String!, petSpecies: String!, petGender: String!, petColor: String!, petDesc: String!, petDateLF: Date!, petStatus: Boolean!, petPhoto: String!, petReward: Number!): Placard
         removePlacard(PlacardId: ID!): Placard
-        addComment(Placard: ID, commentText: String!): Placard
+        addComment(Placard: ID, commentText: String!, commentAuthor: String!, Comment.createdAt: Date!): Placard
     }
     `;
 
