@@ -8,7 +8,7 @@ const typeDefs = gql `
         name: String
     }
     
-    type Pet {
+    type pet {
         _id: ID
         petName: String
         petSpecies: String
@@ -17,7 +17,6 @@ const typeDefs = gql `
         petDesc: String
         petDateLF: Date
         petStatus: Boolean
-        petLocation: String
         petPhoto: String
         petReward: Number
         petComments: [Posts]
@@ -28,6 +27,8 @@ const typeDefs = gql `
         placardText: String
         placardAuthor: String
         createdAt: String
+        placardPet: [ Pet ]
+        location
         comments: [Comment]
     }
 
