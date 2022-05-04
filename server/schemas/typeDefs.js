@@ -8,15 +8,51 @@ const typeDefs = gql `
         name: String
     }
     
+    type Pet {
+        _id: ID
+        petName: String
+        petSpecies: String
+        petGender: String
+        petColor: String
+        petDesc: String
+        petDateLF: Date
+        petStatus: Boolean
+        petLocation: String
+        petPhoto: String
+        petReward: Number
+        petComments: [Posts]
+    }
+
+    type Posts {
+        _id: ID
+        postText: String
+        postAuthor: String
+        createdAt: String
+        comments: [Comment]
+    }
+
+    type Comment {
+        _id: ID
+        commentText: String
+        commentAuthor: String
+        createdAt: String
+    }
+
+    type Auth {
+        token: ID!
+        user: User
+    }
+
     type Query { 
-        categories: [Category]
+        
     }
 
     type Mutation {
-        addPost
-        removePost
         createUser
         login
+        addPost
+        removePost
+        addComment
     }
     `;
 
