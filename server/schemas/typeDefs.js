@@ -25,8 +25,8 @@ const typeDefs = gql `
 
     type Placard {
         _id: ID
-        postText: String
-        postAuthor: String
+        placardText: String
+        placardAuthor: String
         createdAt: String
         comments: [Comment]
     }

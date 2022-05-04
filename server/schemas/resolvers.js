@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { Pet, Post, User } = require('../models');
+const { Pet, Placard, User } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -8,8 +8,13 @@ const resolvers = {
     },
 
     Mutation: {
-        addPlacard: async (parent, args, context) => {
-
+        addPlacard: async (parent, { placardText }, context) => {
+            if(context.user) {
+                const placard = await Placard.create({
+                    placardText,
+                    placardAuthor: context.user.username
+                })
+            }
         },
         removePlacard: async (parent, args, context) => {
             
