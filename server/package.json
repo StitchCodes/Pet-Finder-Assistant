@@ -1,12 +1,12 @@
 {
-  "name": "Pet-Finder-Assistant",
+  "name": "server",
   "version": "1.0.0",
-  "description": "",
+  "description": "pet-finder server",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "watch": "nodemon",
-    "seed": "node seeders/seed.js"
+    "watch": "nodemon server.js",
+    "seed": "node seeds/seed.js"
   },
   "keywords": [],
   "author": "",
