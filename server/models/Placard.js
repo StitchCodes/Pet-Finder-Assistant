@@ -2,15 +2,15 @@ const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
 
-// Post Model Definition
-const postSchema = new Schema({
-    postText: {
+// Placard Model Definition
+const placardSchema = new Schema({
+    placardText: {
         type: String,
         minlength: 1,
         maxlength: 280,
         trim: true,
     },
-    postAuthor: {
+    placardAuthor: {
         type: String,
         required: true,
         trim: true,
@@ -41,6 +41,6 @@ const postSchema = new Schema({
     ],
 });
 
-const Post = model('Post', postSchema);
+const Placard = model('Placard', placardSchema);
 
-module.exports = Post;
+module.exports = Placard;

@@ -23,7 +23,7 @@ const typeDefs = gql `
         petComments: [Posts]
     }
 
-    type Posts {
+    type Placard {
         _id: ID
         postText: String
         postAuthor: String
@@ -44,15 +44,17 @@ const typeDefs = gql `
     }
 
     type Query { 
-        
+        User
+        Placard
+        Pet
     }
 
     type Mutation {
         createUser
-        login
-        addPost
-        removePost
-        addComment
+        login(email: String!, password: String!): Auth
+        addPlacard(placardText: String!): Placard
+        removePlacard(PlacardId: ID!): Placard
+        addComment(Placard: ID, commentText: String!): Placard
     }
     `;
 
