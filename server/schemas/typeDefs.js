@@ -56,10 +56,10 @@ const typeDefs = gql `
         login(email: String!, password: String!): Auth
         addPlacard(placardAuthor: String!, createdAt: Date!, location: String!, petName: String!, petSpecies: String!, petGender: String!, petColor: String!, petDesc: String!, petDateLF: Date!, petStatus: Boolean!, petPhoto: String!, petReward: Number!): Placard
         removePlacard(PlacardId: ID!): Placard
-        addComment(Placard: ID, commentText: String!, commentAuthor: String!, Comment.createdAt: Date!): Placard
+        addComment(Placard: ID, commentText: String!, commentAuthor: String!, createdAt: Date!): Placard
     }
     `;
 
 
 
-module.export = typeDefs;
+module.exports = typeDefs;
