@@ -55,9 +55,10 @@ type Mutation {
     addUser(email: String!, nickname: String, name:String!, lastname:String, phone: String!, password: String!): Auth
     updateUser(nickname: String, name:String!, lastname:String, phone: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addPlacard(placardText: String!): Placard
+    addPlacard(placardAuthor: String!, createdAt: Date!, location: String!, petName: String!, petSpecies: String!, petGender: String!, petColor: String!, petDesc: String!, petDateLF: Date!, petStatus: Boolean!, petPhoto: String!, petReward: Number!): Placard
     removePlacard(PlacardId: ID!): Placard
-    addComment(Placard: ID, commentText: String!): Placard
+    addComment(Placard: ID, commentText: String!, commentAuthor: String!, createdAt: Date!): Placard
 }
 `;
+
 module.exports = typeDefs;
