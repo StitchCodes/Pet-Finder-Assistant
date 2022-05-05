@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "commentText": "First Comment",
+        "commentAuthor": "Dinorah",
+        "commentCreatedAt": ""
+    },
+    {
+        "id": 2,
+        "commentText": "Second Comment",
+        "commentAuthor": "Ernest",
+        "commentCreatedAt": "05/05/2022"
+    }
+]
