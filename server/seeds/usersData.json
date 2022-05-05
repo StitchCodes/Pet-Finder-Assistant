@@ -1,0 +1,34 @@
+[
+    {
+        "email": "mario@mail.com",
+        "nickname": "marinhio",
+        "name": "mario",
+        "lastname": "patino",
+        "phone": "5566778899",
+        "password": "password"
+    },
+    {
+        "email": "miguelstmria@mail.com",
+        "nickname": "mikeStMry",
+        "name": "Miguel",
+        "lastname": "Santamaria",
+        "phone": "3344556677",
+        "password": "password"
+    },
+    {
+        "email": "ernesto@mail.com",
+        "nickname": "Ernets",
+        "name": "Ernesto",
+        "lastname": "Ramirez",
+        "phone": "6677668899",
+        "password": "password"
+    },
+    {
+        "email": "dinora@mail.com",
+        "nickname": "dino",
+        "name": "Dinorah",
+        "lastname": "Abrego",
+        "phone": "4455668899",
+        "password": "password"
+    }
+]

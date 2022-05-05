@@ -31,27 +31,27 @@ const userSchema = new Schema({
         type: String,
         required: true,
         unique: true,
-        match: [/(0-9),10/, 'Only numbers!'],
+        match: [/[0-9]/, 'Only numbers!'],
       },
     password: {
     type: String,
-    required: true,
+    required: false,
     minlength: 5,
     },
 });
 
 
-userSchema.pre('save', async function (next) {
-    if (this.isNew || this.isModified('password')) {
-      const saltRounds = 10;
-      this.password = await bcrypt.hash(this.password, saltRounds);
-    }
-    next();
-  });
+// userSchema.pre('save', async function (next) {
+//    if (this.isNew || this.isModified('password')) {
+//      const saltRounds = 10;
+//      this.password = await bcrypt.hash(this.password, saltRounds);
+//    }
+//    next();
+//  });
   
-  userSchema.methods.isCorrectPassword = async function (password) {
-    return bcrypt.compare(password, this.password);
-  };
+//  userSchema.methods.isCorrectPassword = async function (password) {
+//    return bcrypt.compare(password, this.password);
+//  };
   
   const User = model('User', userSchema);
   

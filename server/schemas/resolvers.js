@@ -4,7 +4,9 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
-        // missing query from mario
+        user: async (parent, { email, password }) => {
+            return User.findOne({ email, password }).populate('placards');
+          },
     },
 
     Mutation: {
