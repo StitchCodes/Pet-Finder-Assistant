@@ -12,7 +12,10 @@ const resolvers = {
         // Query single placard
         singlePlacard: async (parent, { placardId }) => {
             return Placard.findOne({ _id: placardId });
-        }
+        },
+        user: async (parent, { email, password }) => {
+            return User.findOne({ email, password }).populate('placards');
+          },
     },
 
     Mutation: {
