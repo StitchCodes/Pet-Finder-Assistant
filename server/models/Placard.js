@@ -69,7 +69,7 @@ const placardSchema = new Schema({
                 required: true,
             },
             petReward: {
-                type: Number,
+                type: Int,
                 required: false
             },
         },
