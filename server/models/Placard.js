@@ -6,7 +6,7 @@ const dateFormat = require('../utils/dateFormat');
 const placardSchema = new Schema({
     placardAuthor: {
         type: String,
-        required: true,
+        required: false,
         trim: true,
     },
     createdAt: {
@@ -14,7 +14,11 @@ const placardSchema = new Schema({
         default: Date.now,
         get: (timestamp) => dateFormat(timestamp),
     },
-    comments: [
+    location: {
+        type: String,
+        required: true,
+    },
+    comments:[
         {
             commentText: {
                 type: String,
@@ -26,58 +30,13 @@ const placardSchema = new Schema({
                 type: String,
                 required: true,
             },
-            createdAt: {
+            commentCreatedAt: {
                 type: Date,
                 default: Date.now,
                 get: (timestamp) => dateFormat(timestamp),
-            },
-        },
-    ],
-    pet: [
-        {
-            petName: {
-                type: String,
-                required: true,
-                trim: true,
-            },
-            petSpecies: {
-                type: String,
-                required: true,
-            },
-            petGender: {
-                type: String,
-                required: true,
-            },
-            petColor: {
-                type: String,
-                required: true,
-            },
-            petDesc: {
-                type: String,
-                required: true,
-            },
-            petDateLF: {
-                type: Date,
-                required: true,
-            },
-            petStatus: {
-                type: Boolean,
-                required: true,
-            },
-            petPhoto: {
-                type: String,
-                required: true,
-            },
-            petReward: {
-                type: Number,
-                required: false
-            },
-        },
-    ],
-    location: {
-        type: String,
-        required: true,
-    },
+            }
+        }
+    ]
 });
 
 const Placard = model('Placard', placardSchema);

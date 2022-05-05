@@ -1,8 +1,8 @@
-// CREATE GRAPHQL USAGE
 const { gql } = require('apollo-server-express');
 
-// TODO: Create full model
+
 const typeDefs = gql `
+# USER TYPEDEF
     type User {
         _id: ID
         email: String
@@ -12,62 +12,56 @@ const typeDefs = gql `
         phone: String
         password: String
   }
-
-    type Auth {
-        token: ID!
-        user: User
+# Placard TYPEDEF
+    type Placard {
+        _id: ID
+        placardAuthor: String
+        createdAt: String
+        placardPet: Pet
+        comments: [Comment]
     }
-    
-    type pet {
+# PET TYPEDEF
+    type Pet {
         _id: ID
         petName: String
         petSpecies: String
         petGender: String
         petColor: String
         petDesc: String
-        petDateLF: Date
+        petDateLF: String
         petStatus: Boolean
         petPhoto: String
-        petReward: Number
-        petComments: [Posts]
+        petReward: Int
     }
-
-    type Placard {
-        _id: ID
-        placardText: String
-        placardAuthor: String
-        createdAt: String
-        placardPet: [ Pet ]
-        location
-        comments: [Comment]
-    }
-
+# COMMENT TYPEDEF
     type Comment {
         _id: ID
         commentText: String
         commentAuthor: String
-        createdAt: String
+        commentCreatedAt: String
     }
-
+# AUTH TYPEDEF
     type Auth {
         token: ID!
         user: User
     }
-
+# QUERY DEFINITIOM
     type Query { 
-        user(email: String!, password: String!): User
-    }
       
+        user(email: String!, password: String!): User
+        placards: [Placard]
+        singlePlacard(placardId: ID): Placard
+        pets: [Pet]
+    }
+# MUTATIONS DEFINITON
     type Mutation {
-        addUser(email: String!, nickname: String, name:String!, lastname:String, phone: String!, password: String!): Auth
+        addUser(email: String!, nickname: String, name:String!, lastname:String, phone: String!, password: String!): User
         updateUser(nickname: String, name:String!, lastname:String, phone: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
-        addPlacard(placardText: String!): Placard
+        addPlacard(placardAuthor: String!, createdAt: String!, location: String!, petName: String!, petSpecies: String!, petGender: String!, petColor: String!, petDesc: String!, petDateLF: String!, petStatus: Boolean!, petPhoto: String!, petReward: Int!): Placard
         removePlacard(PlacardId: ID!): Placard
-        addComment(Placard: ID, commentText: String!): Placard
+        addComment(Placard: ID, commentText: String!, commentAuthor: String!, commentCreatedAt: String!): Placard
     }
-    `;
+`;
 
-
-
-module.export = typeDefs;
+module.exports = typeDefs;
