@@ -13,7 +13,7 @@ const resolvers = {
             return Placard.findOne({ _id: placardId });
         },
         user: async (parent, { email, password }) => {
-            return User.findOne({ email, password }).populate('placards');
+            return User.findOne({ email, password });
           },
         pets: async (parent) => {
             return Pet.find()
@@ -21,6 +21,11 @@ const resolvers = {
     },
 
     Mutation: {
+
+
+        addUser: async (parent, { email, nickname, name, lastname, phone, password }, context) => {
+            return User.create({email, nickname, name, lastname, phone, password});
+        }
         // Create new placard
         addPlacard: async(parent, { placardAuthor, createdAt, location, petName, petSpecies, petGender, petColor, petDesc, petDateLF, petStatus, petPhoto, petReward }, context) => {
             if(context.user) {
@@ -74,6 +79,7 @@ const resolvers = {
                 { new: true, runValidators: true }
             );
         },
+
     },
 }
 

@@ -1,5 +1,6 @@
 const { gql } = require('apollo-server-express');
 
+
 const typeDefs = gql `
 # USER TYPEDEF
     type User {
@@ -46,6 +47,7 @@ const typeDefs = gql `
     }
 # QUERY DEFINITIOM
     type Query { 
+      
         user(email: String!, password: String!): User
         placards: [Placard]
         singlePlacard(placardId: ID): Placard
@@ -53,7 +55,7 @@ const typeDefs = gql `
     }
 # MUTATIONS DEFINITON
     type Mutation {
-        addUser(email: String!, nickname: String, name:String!, lastname:String, phone: String!, password: String!): Auth
+        addUser(email: String!, nickname: String, name:String!, lastname:String, phone: String!, password: String!): User
         updateUser(nickname: String, name:String!, lastname:String, phone: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
         addPlacard(placardAuthor: String!, createdAt: String!, location: String!, petName: String!, petSpecies: String!, petGender: String!, petColor: String!, petDesc: String!, petDateLF: String!, petStatus: Boolean!, petPhoto: String!, petReward: Int!): Placard
