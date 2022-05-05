@@ -1,21 +1,23 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { Placard, User } = require('../models');
+const { Placard, User, Pet } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
         // Query all placards
-        placards: async (parent, { email }) => {
-            const params = email ? { email } : {};
-            return Placard.find(params).sort({ createdAt: -1 });
+        placards: async (parent) => {
+            return Placard.find().sort({ createdAt: -1 });
         },
-        // Query single placard
+        // // Query single placard
         singlePlacard: async (parent, { placardId }) => {
             return Placard.findOne({ _id: placardId });
-        }
+        },
         user: async (parent, { email, password }) => {
             return User.findOne({ email, password }).populate('placards');
           },
+        pets: async (parent) => {
+            return Pet.find()
+        }
     },
 
     Mutation: {
@@ -65,8 +67,12 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in to delete!');
         },
         // Create comment to placard
-        addComment: async (parent, args, context) => {
-            
+        addComment: async (parent, { placardId, commentText, commentAuthor, commentCreatedAt}, context) => {
+            return Placard.findOneAndUpdate(
+                { _id: placardId },
+                { $addToSet: { comments: { commentText, commentAuthor, commentCreatedAt}}},
+                { new: true, runValidators: true }
+            );
         },
     },
 }
