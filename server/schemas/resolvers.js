@@ -67,8 +67,12 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in to delete!');
         },
         // Create comment to placard
-        addComment: async (parent, args, context) => {
-            
+        addComment: async (parent, { placardId, commentText, commentAuthor, commentCreatedAt}, context) => {
+            return Placard.findOneAndUpdate(
+                { _id: placardId },
+                { $addToSet: { comments: { commentText, commentAuthor, commentCreatedAt}}},
+                { new: true, runValidators: true }
+            );
         },
     },
 }

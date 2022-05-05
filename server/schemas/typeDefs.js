@@ -14,7 +14,6 @@ const typeDefs = gql `
 # Placard TYPEDEF
     type Placard {
         _id: ID
-        placardText: String
         placardAuthor: String
         createdAt: String
         placardPet: Pet
@@ -38,7 +37,7 @@ const typeDefs = gql `
         _id: ID
         commentText: String
         commentAuthor: String
-        createdAt: String
+        commentCreatedAt: String
     }
 # AUTH TYPEDEF
     type Auth {
@@ -59,7 +58,7 @@ const typeDefs = gql `
         login(email: String!, password: String!): Auth
         addPlacard(placardAuthor: String!, createdAt: String!, location: String!, petName: String!, petSpecies: String!, petGender: String!, petColor: String!, petDesc: String!, petDateLF: String!, petStatus: Boolean!, petPhoto: String!, petReward: Int!): Placard
         removePlacard(PlacardId: ID!): Placard
-        addComment(Placard: ID, commentText: String!, commentAuthor: String!, createdAt: String!): Placard
+        addComment(Placard: ID, commentText: String!, commentAuthor: String!, commentCreatedAt: String!): Placard
     }
 `;
 
