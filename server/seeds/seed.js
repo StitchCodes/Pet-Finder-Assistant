@@ -1,17 +1,17 @@
 const db = require('../config/connection');
-const { User } = require('../models');
+const { User, Pet } = require('../models');
 
 const userData = require('./usersData.json');
-//const placadData = require('./placardData.json')
+const petData = require ('./petData.json');
 
 db.once('open', async () => {
   // clean database
   await User.deleteMany({});
-  //await Placard.deleteMany({});
+  await Pet.deleteMany({});
 
   // bulk create each model
   const users = await User.insertMany(userData);
-  //const placards = await Placard.inserMany(placardData);
+  const pets = await Pet.insertMany(petData);
 
  // for (newPlacard of placards) {
     // randomly add each placard to a user

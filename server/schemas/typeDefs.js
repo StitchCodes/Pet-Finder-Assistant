@@ -48,6 +48,9 @@ const typeDefs = gql `
 # QUERY DEFINITIOM
     type Query { 
         user(email: String!, password: String!): User
+        placards: [Placard]
+        singlePlacard(placardId: ID): Placard
+        pets: [Pet]
     }
 # MUTATIONS DEFINITON
     type Mutation {
