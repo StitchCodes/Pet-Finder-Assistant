@@ -10,7 +10,6 @@ type User {
     lastname: String
     phone: String
     password: String
-    Placard: [Placard]
 }
 
 type Auth {
@@ -52,7 +51,7 @@ type Query {
 }
   
 type Mutation {
-    addUser(email: String!, nickname: String, name:String!, lastname:String, phone: String!, password: String!): Auth
+    addUser(email: String!, nickname: String, name:String!, lastname:String, phone: String!, password: String!): User
     updateUser(nickname: String, name:String!, lastname:String, phone: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addPlacard(placardText: String!): Placard
