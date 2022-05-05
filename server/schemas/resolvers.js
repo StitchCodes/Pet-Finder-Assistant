@@ -5,14 +5,14 @@ const { signToken } = require('../utils/auth');
 const resolvers = {
     Query: {
         // Query all placards
-        placards: async (parent, { email }) => {
-            const params = email ? { email } : {};
-            return Placard.find(params).sort({ createdAt: -1 });
-        },
-        // Query single placard
-        singlePlacard: async (parent, { placardId }) => {
-            return Placard.findOne({ _id: placardId });
-        },
+        // placards: async (parent, { email }) => {
+        //     const params = email ? { email } : {};
+        //     return Placard.find(params).sort({ createdAt: -1 });
+        // },
+        // // Query single placard
+        // singlePlacard: async (parent, { placardId }) => {
+        //     return Placard.findOne({ _id: placardId });
+        // },
         user: async (parent, { email, password }) => {
             return User.findOne({ email, password }).populate('placards');
           },

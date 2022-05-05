@@ -11,15 +11,24 @@ const typeDefs = gql `
         phone: String
         password: String
   }
+# Placard TYPEDEF
+    type Placard {
+        _id: ID
+        placardText: String
+        placardAuthor: String
+        createdAt: String
+        placardPet: Pet
+        comments: [Comment]
+    }
 # PET TYPEDEF
-    type pet {
+    type Pet {
         _id: ID
         petName: String
         petSpecies: String
         petGender: String
         petColor: String
         petDesc: String
-        petDateLF: Date
+        petDateLF: String
         petStatus: Boolean
         petPhoto: String
         petReward: Int
@@ -45,9 +54,9 @@ const typeDefs = gql `
         addUser(email: String!, nickname: String, name:String!, lastname:String, phone: String!, password: String!): Auth
         updateUser(nickname: String, name:String!, lastname:String, phone: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
-        addPlacard(placardAuthor: String!, createdAt: Date!, location: String!, petName: String!, petSpecies: String!, petGender: String!, petColor: String!, petDesc: String!, petDateLF: Date!, petStatus: Boolean!, petPhoto: String!, petReward: Int!): Placard
+        addPlacard(placardAuthor: String!, createdAt: String!, location: String!, petName: String!, petSpecies: String!, petGender: String!, petColor: String!, petDesc: String!, petDateLF: String!, petStatus: Boolean!, petPhoto: String!, petReward: Int!): Placard
         removePlacard(PlacardId: ID!): Placard
-        addComment(Placard: ID, commentText: String!, commentAuthor: String!, createdAt: Date!): Placard
+        addComment(Placard: ID, commentText: String!, commentAuthor: String!, createdAt: String!): Placard
     }
 `;
 
