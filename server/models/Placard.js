@@ -33,47 +33,6 @@ const placardSchema = new Schema({
             },
         },
     ],
-    pet: [
-        {
-            petName: {
-                type: String,
-                required: true,
-                trim: true,
-            },
-            petSpecies: {
-                type: String,
-                required: true,
-            },
-            petGender: {
-                type: String,
-                required: true,
-            },
-            petColor: {
-                type: String,
-                required: true,
-            },
-            petDesc: {
-                type: String,
-                required: true,
-            },
-            petDateLF: {
-                type: Date,
-                required: true,
-            },
-            petStatus: {
-                type: Boolean,
-                required: true,
-            },
-            petPhoto: {
-                type: String,
-                required: true,
-            },
-            petReward: {
-                type: Number,
-                required: false
-            },
-        },
-    ],
     location: {
         type: String,
         required: true,
