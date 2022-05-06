@@ -37,7 +37,11 @@ const petSchema = Schema({
     petReward: {
         type: Number,
         required: false
-    }
+    },
+    placard: {
+        type: Schema.Types.ObjectId,
+        ref: 'Placard'
+    },
 });
 
 const Pet = model('Pet', petSchema);

@@ -12,30 +12,28 @@ const userSchema = new Schema({
     nickname: {
         type: String,
         require: false,
-        unique: true,
-        trim: true,
     },   
     name: {
         type: String,
         required: true,
-        unique: true,
+        unique: false,
         trim: true,
       },
     lastname: {
         type: String,
         required: true,
-        unique: true,
+        unique: false,
         trim: true,
     },
     phone: {
         type: String,
-        required: true,
-        unique: true,
+        required: false,
+        unique: false,
         match: [/[0-9]/, 'Only numbers!'],
       },
     password: {
     type: String,
-    required: false,
+    required: true,
     minlength: 5,
     },
 });
@@ -53,7 +51,7 @@ userSchema.methods.isCorrectPassword = async function (password) {
     return bcrypt.compare(password, this.password);
 };
   
-  const User = model('User', userSchema);
+const User = model('User', userSchema);
   
-  module.exports = User;
+module.exports = User;
   
