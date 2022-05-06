@@ -8,13 +8,18 @@ const resolvers = {
         placards: async (parent) => {
             return Placard.find({}).populate('placardPet').sort({ createdAt: -1 });
         },
-        // // Query single placard
+        // Query single placard
         singlePlacard: async (parent, { placardId }) => {
-            return Placard.findOne({ _id: placardId });
+            return Placard.findOne({ _id: placardId }).populate('placardPet');
         },
+        // Query User for login
         user: async (parent, { email, password }) => {
             return User.findOne({ email, password });
           },
+        // Query ALL Users
+        allUsers: async (parent) => {
+            return User.find({})
+        },
         pets: async (parent) => {
             return Pet.find()
         }
@@ -71,24 +76,6 @@ const resolvers = {
                 return placard;
             }
             throw new AuthenticationError('Please login to add a new placard!');
-        },
-        // Delete Placard
-        removePlacard: async (parent, { placardId }, context) => {
-            if (context.user) {
-                const placard = await Placard.findeOneAndDelete({
-                    _id: placardId,
-                    placardAuthor: context.user.placardAuthor._id,
-                });
-
-                await User.findOneAndUpdate(
-                    { _id: context.user._id },
-                    { $pull: { placards: placard._id }}
-                );
-
-                return placard;
-            }
-
-            throw new AuthenticationError('You need to be logged in to delete!');
         },
         // Create comment to placard
         addComment: async (parent, { placardId, commentText, commentAuthor, commentCreatedAt}, context) => {
