@@ -6,7 +6,7 @@ const resolvers = {
     Query: {
         // Query all placards
         placards: async (parent) => {
-            return Placard.find().sort({ createdAt: -1 });
+            return Placard.find({}).populate('placardPet').sort({ createdAt: -1 });
         },
         // // Query single placard
         singlePlacard: async (parent, { placardId }) => {
@@ -21,11 +21,30 @@ const resolvers = {
     },
 
     Mutation: {
+        // Authenticate a user and create jwt token
+        login: async (parent, { email, password }) => {
+            const user = await User.findOne({ email });
+            if (!user) {
+                throw new AuthenticationError('Data enter does not match with an active user');
+            }
 
+            const correctPwd = await user.isCorrectPassword(password);
+            if (!correctPwd) {
+                throw new AuthenticationError('Data enter does not match with an active user');
+            }
 
+            const token = signToken(user);
+            return {token, user}
+        },
+
+        // Create new user (sing up) and create jwt token
         addUser: async (parent, { email, nickname, name, lastname, phone, password }, context) => {
-            return User.create({email, nickname, name, lastname, phone, password});
-        }
+            const user = await User.create({email, nickname, name, lastname, phone, password});
+            console.log (user);
+            const token = signToken(user);
+            return {token, user}
+        },
+        
         // Create new placard
         addPlacard: async(parent, { placardAuthor, createdAt, location, petName, petSpecies, petGender, petColor, petDesc, petDateLF, petStatus, petPhoto, petReward }, context) => {
             if(context.user) {

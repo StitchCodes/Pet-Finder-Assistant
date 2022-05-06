@@ -22,8 +22,10 @@ if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '../client/build')));
 }
 
-// REDIRECT ROUTE FOR HTML
-
+// REDIRECT DEFAULT ROUTE FOR ANY REQUEST 
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/build/index.html'));
+  });
 
 // CREATE APOLLO SERVER CONNECTION WITH GRAPHQL
 const startApolloServer = async (typeDefs, resolvers ) => {
