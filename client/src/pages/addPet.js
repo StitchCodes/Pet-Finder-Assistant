@@ -1,22 +1,63 @@
 import React from "react";
-import { Form, Button } from "semantic-ui-react";
+import { Form, Button, Segment, Grid, GridColumn } from "semantic-ui-react";
 
 const options = [
-  { key: "m", text: "Male", value: "male" },
-  { key: "f", text: "Female", value: "female" },
+  { key: "d", text: "Dog", value: "dog" },
+  { key: "c", text: "Cat", value: "cat" },
   { key: "o", text: "Other", value: "other" },
 ];
 
-const FormExampleFieldError = () => (
-  <Form>
-    <Form.Group widths="equal">
-      <Form.Input fluid label="First name" placeholder="First name" error />
-      <Form.Input fluid label="Last name" placeholder="Last name" />
-    </Form.Group>
-    <Form.Select options={options} placeholder="Gender" error />
+const addPet = () => (
+  <Segment>
+    <Grid columns={2} relaxed="very">
+      <GridColumn>
+        <Image src="" />
+      </GridColumn>
 
-    <Button>Submit</Button>
-  </Form>
+      <Grid.Column>
+        <Form>
+          <Form.Group>
+            <Form.Field>
+              <Form.Input fluid label="Name" placeholder="Name" error />
+            </Form.Field>
+
+            <Form.Select options={options} placeholder="Species" error />
+          </Form.Group>
+
+          <Form.Group inline>
+            <label>Gender</label>
+            <Form.Radio
+              label="Male"
+              value="sm"
+              checked={value === "sm"}
+              onChange={this.handleChange}
+            />
+            <Form.Radio
+              label="Female"
+              value="md"
+              checked={value === "md"}
+              onChange={this.handleChange}
+            />
+          </Form.Group>
+
+          <Form.TextArea
+            label="Description"
+            placeholder="Small description about the pet"
+          />
+
+          <Form.Field>
+            <label>Address where the pet was last seen</label>
+            <input />
+          </Form.Field>
+
+          <Button primary>Add Photo</Button>
+
+          <Button>Submit</Button>
+        </Form>
+      </Grid.Column>
+    </Grid>
+    <Divider vertical></Divider>
+  </Segment>
 );
 
-export default FormExampleFieldError;
+export default addPet;

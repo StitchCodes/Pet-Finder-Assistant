@@ -18,6 +18,10 @@ const placardSchema = new Schema({
         type: String,
         required: true,
     },
+    placardPet: {
+        type: Schema.Types.ObjectId,
+        ref: 'Pet'
+    },
     comments:[
         {
             commentText: {
