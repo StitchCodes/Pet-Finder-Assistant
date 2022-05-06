@@ -8,6 +8,7 @@ import {
   Container,
   Button,
 } from 'semantic-ui-react';
+import PaymentForm from '../components/PaymentForm';
 
 const Help = () => (
   <div>
@@ -36,18 +37,16 @@ const Help = () => (
               <Icon name='world' />
               Select amount
             </Header>
+            <Grid.Row>
             <Button primary>100 mxn </Button>
             <Button primary>200 mxn</Button>
             <Button primary>200 mxn</Button>
+            </Grid.Row>
           </Grid.Column>
         </Grid.Row>
       </Grid>
     </Segment>
-    <Grid.Row style={{ marginTop: '10em' }} >
-           <Grid.Column floated='right' width={5}>
-              <Button floated='right'>Add a Pet</Button>
-           </Grid.Column>
-    </Grid.Row>
+
    </Container>
 </div>
 )
