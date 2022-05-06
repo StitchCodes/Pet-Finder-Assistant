@@ -7,8 +7,10 @@ import {
   Image,
   Segment,
 } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
 import CommentSection from '../components/CommentSection';
+import MapComponent from '../components/MapComponent';
+import EmailModal from '../components/EmailModal';
+import Dog1 from "../assets/images/dog3.png";
 
 const IndividualPlacard = () => (
   <div>
@@ -25,7 +27,7 @@ const IndividualPlacard = () => (
           <Card fluid>
               <Card.Content>
               <Grid.Column floated='left' width={3}>
-                <Image floated='left' verticalAlign='top' src={'https://preview.redd.it/dlz88eao41821.jpg?auto=webp&s=cc9ae1dd3133464cc1825ad9753b48d57daec59a'} size='medium' rounded />
+                <Image floated='left' verticalAlign='top' src={Dog1} size='medium' rounded />
               </Grid.Column>
            
               <Grid.Column floated='left' width={12}>
@@ -65,10 +67,11 @@ const IndividualPlacard = () => (
               <Card.Content>
                     <Header as='h3'> Area where I was last seen:
                     </Header> 
+                    <MapComponent/>
               </Card.Content>
 
               <Card.Content>
-                    <Link to="/helpout"><button class="fluid ui button">Contact Owner</button></Link>
+                <EmailModal/>
               </Card.Content>
           </Card>
           </Grid.Column>

@@ -6,6 +6,7 @@ Header,
 Container,
 } from 'semantic-ui-react';
 import IndividualComment from '../IndividualComment';
+import Image from "../../assets/images/paw.png";
 
 const CommentSection = () => (
   <div>
@@ -17,7 +18,7 @@ const CommentSection = () => (
 
 
         <Comment>
-          <Comment.Avatar src='https://i.pinimg.com/originals/16/7c/4b/167c4be0744c2f9ba323f75c42597e15.png' />
+          <Comment.Avatar src={Image} />
           <Comment.Content>
             <Comment.Author as='a'>Elliot Fu</Comment.Author>
             <Comment.Metadata>
@@ -32,7 +33,7 @@ const CommentSection = () => (
           </Comment.Content>
           <Comment.Group>
             <Comment>
-              <Comment.Avatar src='https://i.pinimg.com/originals/16/7c/4b/167c4be0744c2f9ba323f75c42597e15.png' />
+              <Comment.Avatar src={Image} />
               <Comment.Content>
                 <Comment.Author as='a'>Jenny Hess</Comment.Author>
                 <Comment.Metadata>
