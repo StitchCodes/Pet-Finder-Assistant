@@ -25,13 +25,13 @@ db.once('open', async () => {
     await tempPlacard.save();
   }
 
-  for (newComment of pets) {
-    // randomly add each placard to a user
-    const tempPlacard = placards[Math.floor(Math.random() * placards.length)];
-    tempPlacard.placardPet = newPet;
-    console.log(tempPlacard.placardPet);
-    await tempPlacard.save();
-  }
+  // for (newComment of pets) {
+  //   // randomly add each placard to a user
+  //   const tempPlacard = placards[Math.floor(Math.random() * placards.length)];
+  //   tempPlacard.placardPet = newPet;
+  //   console.log(tempPlacard.placardPet);
+  //   await tempPlacard.save();
+  // }
 
 //  for (newPlacard of placards) {
 //     // randomly add each placard to a user
