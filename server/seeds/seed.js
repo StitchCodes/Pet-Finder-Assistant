@@ -17,13 +17,12 @@ db.once('open', async () => {
   const pets = await Pet.insertMany(petData);
   const placard = await Placard.insertMany(placardData);
 
- // for (newPlacard of placards) {
-    // randomly add each placard to a user
-    // const tempUser = users[Math.floor(Math.random() * users.length)];
-    // tempUser.placards.push(newPlacard._id);
-    // await tempUser.save();
-
-  //}
+//  for (newPet of pets) {
+//     // randomly add each placard to a user
+//     const tempPlacard = placard[Math.floor(Math.random() * placard.length)];
+//     tempPlacard.placardPet = newPet;
+//     await tempPlacard.save();
+//   }
 
   console.log('all done!');
   process.exit(0);
