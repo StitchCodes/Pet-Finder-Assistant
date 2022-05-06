@@ -7,7 +7,7 @@ import Footer from './components/Footer';
 import Main from './pages/Main';
 import Help from './pages/Help';
 import SignupLogin from './pages/SignupLogin';
-import addPet from './pages/addPet';
+import AddPet from './pages/AddPet';
 import IndividualPlacard from './pages/IndividualPlacard';
 
 const client = new ApolloClient({
@@ -38,7 +38,7 @@ function App() {
               />
                <Route 
                 path="/addpet" 
-                element={<addPet />}
+                element={<AddPet />}
               />
                <Route 
                 path="/pet" 
