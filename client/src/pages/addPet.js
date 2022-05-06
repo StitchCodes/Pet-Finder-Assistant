@@ -11,7 +11,7 @@ const addPet = () => (
   <Segment>
     <Grid columns={2} relaxed="very">
       <GridColumn>
-        <Image src="" />
+        {/* <Image src="" /> */}
       </GridColumn>
 
       <Grid.Column>
@@ -29,13 +29,13 @@ const addPet = () => (
             <Form.Radio
               label="Male"
               value="sm"
-              checked={value === "sm"}
+              // checked={value === "sm"}
               onChange={this.handleChange}
             />
             <Form.Radio
               label="Female"
               value="md"
-              checked={value === "md"}
+              // checked={value === "md"}
               onChange={this.handleChange}
             />
           </Form.Group>
@@ -56,7 +56,7 @@ const addPet = () => (
         </Form>
       </Grid.Column>
     </Grid>
-    <Divider vertical></Divider>
+    {/* <Divider vertical></Divider> */}
   </Segment>
 );
 
