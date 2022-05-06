@@ -6,6 +6,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Main from './pages/Main';
 import Help from './pages/Help';
+import SignupLogin from './pages/SignupLogin';
 import addPet from './pages/addPet';
 import IndividualPlacard from './pages/IndividualPlacard';
 
@@ -33,7 +34,7 @@ function App() {
               />
               <Route 
                 path="/login" 
-                element={<Help />}
+                element={<SignupLogin />}
               />
                <Route 
                 path="/addpet" 
