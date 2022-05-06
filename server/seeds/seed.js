@@ -21,7 +21,6 @@ db.once('open', async () => {
     // randomly add each placard to a user
     const tempPlacard = placards[Math.floor(Math.random() * placards.length)];
     tempPlacard.placardPet = newPet;
-    console.log(tempPlacard.placardPet);
     await tempPlacard.save();
   }
 

@@ -48,6 +48,7 @@ type Comment {
 
 type Query { 
     user(email: String!, password: String!): User
+    allUsers: [User]
     placards: [Placard]
     singlePlacard(placardId: ID): Placard
     pets: [Pet]
@@ -55,10 +56,8 @@ type Query {
   
 type Mutation {
     addUser(email: String!, nickname: String, name:String!, lastname:String!, phone: String, password: String!): Auth
-    updateUser(nickname: String, name:String!, lastname:String, phone: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addPlacard(placardAuthor: String!, createdAt: String!, location: String!, petName: String!, petSpecies: String!, petGender: String!, petColor: String!, petDesc: String!, petDateLF: String!, petStatus: Boolean!, petPhoto: String!, petReward: Int!): Placard
-    removePlacard(PlacardId: ID!): Placard
     addComment(Placard: ID, commentText: String!, commentAuthor: String!, commentCreatedAt: String!): Placard
 }
 `;

@@ -1,21 +1,29 @@
 import { gql } from '@apollo/client';
 
-export const ADD_PLACARD = gql `
-    mutation addPlacard($placardAuthor: String!, $createdAt: Date!, $location: String!, $petName: String!, $petSpecies: String!, $petGender: String!, $petColor: String!, $petDesc: String!, $petDateLF: Date!, $petStatus: Boolean!, $petPhoto: String, $petReward: Int) {
-        addPlacard(placardAuthor: $placardAuthor, createdAt: $createdAt, location: $location, petName: $petName, petSpecies: $petSpecies, petGender: $petGender, petColor: $petColor, petDesc: $petDesc, petDateLF: $petDateLF, petStatus: $petStatus, petPhoto: $petPhoto, petReward: $petReward) {
+// Add New User
+export const NEWUSER = gql `
+    mutation AddUser($email: String!, $name: String!, $lastname: String!, $password: String!, $nickname: String, $phone: String) {
+        addUser(email: $email, name: $name, lastname: $lastname, password: $password, nickname: $nickname, phone: $phone) {
+            token
+            user {
             _id
-            placardAuthor
-            createdAt
-            location
-            petName
-            petSpecies
-            petGender
-            petColor
-            petDesc
-            petDateLF
-            petStatus
-            petPhoto
-            petReward
+            email
+            nickname
+            name
+            lastname
+            phone
+            }
         }
     }
 `;
+
+// User login Mutation
+export const LOGIN = gql `
+    mutation Login($email: String!, $password: String!) {
+        login(email: $email, password: $password) {
+        token
+        }
+    }
+`;
+
+// Add Comment
