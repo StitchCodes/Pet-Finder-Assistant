@@ -6,11 +6,12 @@ import {
   GridColumn,
   Header,
   Image,
-  Message,
   Segment,
+  Container,
 } from "semantic-ui-react";
 
 const SignupLogin = () => (
+  <Container>
   <Segment>
     <Grid columns={2} relaxed="very">
       <GridColumn>
@@ -100,6 +101,7 @@ const SignupLogin = () => (
       </GridColumn>
     </Grid>
   </Segment>
+  </Container>
 );
 
 export default SignupLogin;
