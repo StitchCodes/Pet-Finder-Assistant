@@ -2,11 +2,12 @@ import React from 'react'
 import {
 Comment, 
 } from 'semantic-ui-react';
+import Image from "../../assets/images/paw.png";
 
 const IndividualComment = () => (
   <div>
     <Comment>
-      <Comment.Avatar src='https://i.pinimg.com/originals/16/7c/4b/167c4be0744c2f9ba323f75c42597e15.png' />
+      <Comment.Avatar src={Image} />
       <Comment.Content>
         <Comment.Author as='a'>Matt</Comment.Author>
         <Comment.Metadata>

@@ -1,32 +1,30 @@
-import React, { Component } from 'react';
-import { GoogleMap, LoadScript } from '@react-google-maps/api';
+import React from "react";
+import GoogleMapReact from 'google-map-react';
 
-const containerStyle = {
-  width: '400px',
-  height: '400px'
-};
+const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
-const center = {
-  lat: 20.84773713098244, 
-  lng: -86.87586050864266,
-};
+export default function MapComponent(){
+  const defaultProps = {
+    center: {
+      lat: 20.848249,
+      lng:  -86.876106
+    },
+    zoom: 18
+  };
 
-class MapComponent extends Component {
-  render() {
-    return (
-      <LoadScript
-        googleMapsApiKey="API_KEY"
+  return (
+    <div style={{ height: '400px', width: '100%' }}>
+      <GoogleMapReact
+        bootstrapURLKeys={{ key: "AIzaSyAm_8uIOHe0Gr1lpNueCHZOcawTLEvWfno" }}
+        defaultCenter={defaultProps.center}
+        defaultZoom={defaultProps.zoom}
       >
-        <GoogleMap
-          mapContainerStyle={containerStyle}
-          center={center}
-          zoom={10}
-        >
-          <></>
-        </GoogleMap>
-      </LoadScript>
-    )
-  }
+        <AnyReactComponent
+          lat={20.848249}
+          lng={ -86.876106}
+          text="Last Seen"
+        />
+      </GoogleMapReact>
+    </div>
+  );
 }
-
-export default MapComponent;
