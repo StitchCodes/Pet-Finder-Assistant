@@ -6,9 +6,7 @@ const expiration = process.env.JWT_EXPIRATION;
 
 module.exports = {
   authMiddleware: function ({ req }) {
-    console.log(req.body.token);
-    console.log(req.query.token);
-    console.log(req.headers.authorization);
+
     let token = req.body.token || req.query.token || req.headers.authorization;
 
     if (req.headers.authorization) {
@@ -20,10 +18,7 @@ module.exports = {
     }
 
     try {
-      console.log(token);
-      
       const { data } = jwt.verify(token, secret, { maxAge: expiration });
-      console.log(data);
       req.user = data;
     } catch {
       console.log("Invalid Token");

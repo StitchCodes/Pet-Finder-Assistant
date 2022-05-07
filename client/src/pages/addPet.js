@@ -3,11 +3,7 @@ import { useMutation } from '@apollo/client';
 import { ADDPLACARD } from '../utils/mutations';
 import { Container, Form, Button, Segment, Grid, GridColumn, Image, Divider } from "semantic-ui-react";
 import PetBackground from "../assets/images/pets.png";
-
-
-//import Auth from '../utils/auth';
-
-
+import Auth from '../utils/auth';
 
 const AddPetForm = (props) => {
 
