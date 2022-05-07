@@ -6,7 +6,6 @@ import {
   Divider,
   Icon,
   Container,
-  Button,
 } from "semantic-ui-react";
 import Checkout from "../components/Checkout";
 // import PaymentForm from "../components/PaymentForm";
@@ -43,8 +42,6 @@ const Help = () => (
               </Header>
               <Grid.Row>
                 <Checkout />
-                <Button primary>200 mxn</Button>
-                <Button primary>200 mxn</Button>
               </Grid.Row>
             </Grid.Column>
           </Grid.Row>
