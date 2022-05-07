@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN } from '../utils/mutations';
 import { Button, Form, Grid, GridColumn, Header, Image, Segment, Container} from "semantic-ui-react";
