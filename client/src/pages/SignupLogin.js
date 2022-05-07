@@ -35,13 +35,13 @@ const Login = (props) => {
         <Grid columns={2} relaxed="very">
           <GridColumn>
             <Grid
-              textAllign="center"
+              textallign="center"
               style={{ height: "100vh" }}
-              verticalAllign="middle"
+              verticalallign="middle"
             >
               {/* LOGIN TO YOUR ACCOUNT */}
               <GridColumn style={{ maxWidth: 450 }}>
-                <Header as="h2" color="teal" textAllign="center">
+                <Header as="h2" color="teal" textallign="center">
                   <Image src="logo.png" /> Log-in to your Account
                 </Header>
     
@@ -65,7 +65,7 @@ const Login = (props) => {
                       value={formState.password}
                       onChange={handleChange}
                     />
-                    <Button color="teal" fluid size="lartge ">
+                    <Button color="teal" fluid size="large">
                       Log In
                     </Button>
                   </Segment>
@@ -75,13 +75,13 @@ const Login = (props) => {
           </GridColumn>
           <GridColumn>
             <Grid
-              textAllign="center"
+              textallign="center"
               style={{ height: "100vh" }}
-              verticalAllign="middle"
+              verticalallign="middle"
             >
               {/* CREATE ACCOUNT */}
               <GridColumn style={{ maxWidth: 450 }}>
-                <Header as="h2" color="teal" textAllign="center">
+                <Header as="h2" color="teal" textallign="center">
                   <Image src="logo.png" /> Create your Account
                 </Header>
     
@@ -90,13 +90,13 @@ const Login = (props) => {
                     <Form.Input
                       fluid
                       icon="address book"
-                      inconPosition="left"
+                      iconPosition="left"
                       placeholder="First Name"
                     />
                     <Form.Input
                       fluid
                       icon="address book outline"
-                      inconPosition="left"
+                      iconPosition="left"
                       placeholder="Last Name"
                     />
                     <Form.Input
@@ -118,7 +118,7 @@ const Login = (props) => {
                       iconPosition="left"
                       placeholder="phone #"
                     />
-                    <Button color="teal" fluid size="lartge ">
+                    <Button color="teal" fluid size="large">
                       Sign In
                     </Button>
                   </Segment>
