@@ -13,8 +13,64 @@ class Header extends Component {
 
   render() {
     const { activeItem } = this.state
+    
+    function LoginBtn(props) {
+      return (
+      <Menu.Menu position='right'>
+      <Link to="/login">
+        <Menu.Item>
+          <Button primary>Log In</Button>
+        </Menu.Item>
+      </Link>
+    </Menu.Menu>);
+    };
 
-    return (
+    function LogoutBtn(props) {
+      return (
+        <Menu.Menu position='right'>
+        <Link to="/">
+          <Menu.Item onClick={handleLogout}>
+            <Button primary>Log Out!</Button>
+          </Menu.Item>
+        </Link>
+      </Menu.Menu>
+      );
+    };
+
+    function UsernameToken(props) {
+      const userName = Auth.getUser().data.name;
+      const userLastname = Auth.getUser().data.lastname;
+      const userNickname = Auth.getUser().data.nickname;
+
+      if (userNickname) {
+          return <p>{userNickname}</p>
+        }
+        else {
+          return <p>{userName} {userLastname}</p>
+        }
+    };
+
+    function LogStatus(props) {
+
+      if (Auth.loggedIn()) {
+        return (
+        <div>
+          <UsernameToken />
+          <LogoutBtn />
+        </div>
+        )
+      }
+      return <LoginBtn />
+    };
+
+    function handleLogout(params) {
+      const user = Auth.getUser();
+
+      Auth.logout(user);
+    };
+
+      return (
+
       <Menu fixed='top' inverted color='teal' size='massive'>
         <Menu.Item as='a' header>
           <Image height="30" src={Logo} style={{ marginRight: '1.5em' }} />
@@ -26,22 +82,18 @@ class Header extends Component {
             active={activeItem === 'Lost and Found'}
             onClick={this.handleItemClick}
           />
-       </Link>
-       <Link to="/helpout">
+        </Link>
+        
+        <Link to="/helpout">
           <Menu.Item
             name='Help Out'
             active={activeItem === 'Help Out'}
             onClick={this.handleItemClick}
           />
         </Link>
-        
-        <Menu.Menu position='right'>
-          <Link to="/login">
-            <Menu.Item>
-              <Button primary>Log In</Button>
-            </Menu.Item>
-          </Link>
-        </Menu.Menu>
+        {/* <UsernameToken  /> */}
+        {/* LOGIN/LOGOUT BUTTON */}
+        <LogStatus />        
       </Menu>
     )
   }
