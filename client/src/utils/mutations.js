@@ -19,7 +19,7 @@ export const NEWUSER = gql `
 
 // User login Mutation
 export const LOGIN = gql `
-    mutation Login($email: String!, $password: String!) {
+    mutation login($email: String!, $password: String!) {
         login(email: $email, password: $password) {
         token
         }
