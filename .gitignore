@@ -5,4 +5,4 @@ package-lock.json
 /node_modules/
 .env
 tempfile.js
-.eslintcache
+/.eslintcache/
