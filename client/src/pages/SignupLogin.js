@@ -6,38 +6,27 @@ import { Button, Form, Grid, GridColumn, Header, Image, Segment, Container} from
 import Auth from '../utils/auth';
 
 const Login = (props) => {
-  const [formState, setFormState] = useState({ email: '', password: '' });
-  const [login, { error, data }] = useMutation(LOGIN);
+  const [formState, setFormState] = useState({ email: '', password: ''});
+  const [login, {error, data}] = useMutation(LOGIN);
 
-  // update state based on form input changes
+  // Update form state on Input
   const handleChange = (event) => {
-    const { name, value } = event.target;
+    const {name, value} = event.target;
 
-    setFormState({
-      ...formState,
-      [name]: value,
-    });
+    setFormState({ ...formState, [name]: value});
   };
 
-  // submit form
+  // Submit Form function
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
+    
     try {
-      const { data } = await login({
-        variables: { ...formState },
-      });
+      const {data} = await login({variables: { ...formState}});
 
       Auth.login(data.login.token);
     } catch (e) {
       console.error(e);
     }
-
-    // clear form values
-    setFormState({
-      email: '',
-      password: '',
-    });
   };
 
   return (
@@ -63,6 +52,7 @@ const Login = (props) => {
                       icon="user"
                       iconPosition="left"
                       placeholder="E-mail address"
+                      name="email"
                       value={formState.email}
                       onChange={handleChange}
                     />
@@ -71,6 +61,7 @@ const Login = (props) => {
                       icon="lock"
                       placeholder="Password"
                       type="password"
+                      name="password"
                       value={formState.password}
                       onChange={handleChange}
                     />

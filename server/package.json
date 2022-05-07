@@ -4,7 +4,7 @@
   "description": "pet-finder server",
   "main": "server.js",
   "scripts": {
-    "start": "node server/server.js --ignore client",
+    "start": "node server.js --ignore client",
     "watch": "nodemon",
     "seed": "node seeds/seed.js"
   },

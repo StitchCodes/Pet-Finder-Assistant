@@ -8,7 +8,7 @@ import {
   Container,
   Button,
 } from 'semantic-ui-react';
-import PaymentForm from '../components/PaymentForm';
+// import PaymentForm from '../components/PaymentForm';
 
 const Help = () => (
   <div>
