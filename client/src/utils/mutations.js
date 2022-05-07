@@ -18,4 +18,46 @@ export const LOGIN = gql `
     }
 `;
 
-// Add Comment
+// Add Placard
+export const ADDPLACARD = gql `
+    mutation addPlacard(
+        $placardAuthor: ID!, 
+        $createdAt: String, 
+        $location: String, 
+        $petName: String, 
+        $petSpecies: String, 
+        $petGender: String, 
+        $petColor: String, 
+        $petDesc: String, 
+        $petDateLF: String, 
+        $petStatus: String, 
+        $petPhoto:String, 
+        $petReward: String) {
+            addPlacard(
+                placardAuthor:  $placardAuthor
+                createdAt: $createdAt
+                location: $location
+                petName: $petName
+                petSpecies: $petName
+                petGender: $petGender
+                petColor: $petColor 
+                petDesc: $petDesc
+                petDateLF: $petDateLF
+                petStatus: $petStatus 
+                petPhoto: $petPhoto
+                petReward: $petReward) {
+                    placardAuthor
+                    createdAt
+                    location
+                    petName
+                    petSpecies
+                    petGender
+                    petColor 
+                    petDesc
+                    petDateLF
+                    petStatus
+                    petReward
+                }
+
+    }
+`
