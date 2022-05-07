@@ -8,7 +8,8 @@ import {
   Container,
   Button,
 } from "semantic-ui-react";
-import PaymentForm from "../components/PaymentForm";
+import Checkout from "../components/Checkout";
+// import PaymentForm from "../components/PaymentForm";
 
 const Help = () => (
   <div>
@@ -41,7 +42,7 @@ const Help = () => (
                 Select amount
               </Header>
               <Grid.Row>
-                <Button primary>100 mxn </Button>
+                <Checkout />
                 <Button primary>200 mxn</Button>
                 <Button primary>200 mxn</Button>
               </Grid.Row>
@@ -52,5 +53,4 @@ const Help = () => (
     </Container>
   </div>
 );
-
 export default Help;
