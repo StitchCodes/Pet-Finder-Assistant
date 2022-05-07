@@ -10,6 +10,7 @@ import {
   Divider,
 } from "semantic-ui-react";
 import PetBackground from "../../assets/images/pets.png";
+import Upload from "../Upload";
 
 const options = [
   { key: "d", text: "Dog", value: "dog" },
@@ -69,7 +70,9 @@ class addPetForm extends Component {
                   <input />
                 </Form.Field>
 
-                <Button primary>Add Photo</Button>
+                <Button primary>
+                  <Upload />
+                </Button>
 
                 <Button>Submit</Button>
               </Form>
