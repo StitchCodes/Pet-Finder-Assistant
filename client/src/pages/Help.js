@@ -23,7 +23,7 @@ const Help = () => (
       <Grid columns={2} stackable textAlign='center'>
         <Divider vertical></Divider>
 
-        <Grid.Row verticalAlign='middle'>
+        <Grid.Row verticalalign='middle'>
           <Grid.Column>
             <Header icon>
               <Icon name='paw' />
