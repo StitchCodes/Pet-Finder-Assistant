@@ -1,6 +1,8 @@
+
 import React from "react";
 import { Segment, Container, Image } from "semantic-ui-react";
 import Logo from "../../assets/images/logo.png";
+
 const Footer = () => {
   return (
     <Segment fixed="bottom" inverted color="teal">
