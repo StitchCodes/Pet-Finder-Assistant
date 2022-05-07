@@ -33,7 +33,6 @@ class addPetForm extends Component {
             <GridColumn>
               <Image src={PetBackground} />
             </GridColumn>
-
             <Grid.Column>
               <Form>
                 <Form.Group>
@@ -43,7 +42,6 @@ class addPetForm extends Component {
 
                   <Form.Select options={options} placeholder="Species" error />
                 </Form.Group>
-
                 <Form.Group inline>
                   <label>Gender</label>
                   <Form.Radio
@@ -59,7 +57,6 @@ class addPetForm extends Component {
                     onChange={this.handleChange}
                   />
                 </Form.Group>
-
                 <Form.TextArea
                   label="Description"
                   placeholder="Small description about the pet"
