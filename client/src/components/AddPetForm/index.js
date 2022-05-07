@@ -1,16 +1,27 @@
-import React from 'react'
-import {
-  Container,
-  Grid,
-} from 'semantic-ui-react';
+import React, { Component }  from "react";
+import { Container, Form, Button, Segment, Grid, GridColumn, Image, Divider } from "semantic-ui-react";
+import PetBackground from "../../assets/images/pets.png";
 
-import AddPetForm from '../components/AddPetForm';
+const options = [
+  { key: "d", text: "Dog", value: "dog" },
+  { key: "c", text: "Cat", value: "cat" },
+  { key: "o", text: "Other", value: "other" },
+];
 
-const addPet = () => (
+class addPetForm extends Component {
+  state = {}
+
+  handleChange = (e, { value }) => this.setState({ value })
+
+  render() {
+  const { value } = this.state
+    
+  return (
+    <Container>
   <Segment>
     <Grid columns={2} relaxed="very">
       <GridColumn>
-        {/* <Image src="" /> */}
+        <Image src={PetBackground} />
       </GridColumn>
 
       <Grid.Column>
@@ -28,13 +39,13 @@ const addPet = () => (
             <Form.Radio
               label="Male"
               value="sm"
-              // checked={value === "sm"}
+              checked={value === "sm"}
               onChange={this.handleChange}
             />
             <Form.Radio
               label="Female"
               value="md"
-              // checked={value === "md"}
+              checked={value === "md"}
               onChange={this.handleChange}
             />
           </Form.Group>
@@ -55,22 +66,12 @@ const addPet = () => (
         </Form>
       </Grid.Column>
     </Grid>
-    {/* <Divider vertical></Divider> */}
+    <Divider vertical></Divider>
   </Segment>
-);
-  <div>
-    <Container style={{ marginTop: '6em' }}>
-      <Grid>
+  </Container>
+ )
+}
+}
 
-        <Grid.Row>
-          <Grid.Column >
-            <AddPetForm/>
-          </Grid.Column>
-        </Grid.Row>
 
-      </Grid>
-    </Container>
-  </div>
-)
-
-export default addPet;
+export default addPetForm;
