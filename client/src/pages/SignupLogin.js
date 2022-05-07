@@ -1,22 +1,25 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import { LOGIN } from '../utils/mutations';
+import { LOGIN, NEWUSER } from '../utils/mutations';
 import { Button, Form, Grid, GridColumn, Header, Image, Segment, Container} from "semantic-ui-react";
 
 import Auth from '../utils/auth';
 
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: '', password: ''});
+  const [newFormState,setNewFormState] = useState({email:'', name:'', lastname:'', password: '', phone: ''});
   const [login, {error, data}] = useMutation(LOGIN);
+  const [newUser, {error1, data1}] = useMutation(NEWUSER);
 
-  // Update form state on Input
+
+  // Update form state on Input for Login
   const handleChange = (event) => {
     const {name, value} = event.target;
-
+  
     setFormState({ ...formState, [name]: value});
   };
 
-  // Submit Form function
+  // Submit Form function for Login
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     
@@ -24,6 +27,26 @@ const Login = (props) => {
       const {data} = await login({variables: { ...formState}});
 
       Auth.login(data.login.token);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  // Update form state on Input for sing up
+  const sigUpHandleChange = (event) => {
+    const {name, value} = event.target;
+  
+    setNewFormState({ ...newFormState, [name]: value});
+  };
+
+   // Submit Form function for sign up
+   const signupHandleFormSubmit = async (event) => {
+    event.preventDefault();
+    
+    try {
+      const {data} = await newUser({variables: { ...newFormState}});
+      console.log(data);
+      Auth.login(data.addUser.token);
     } catch (e) {
       console.error(e);
     }
@@ -53,7 +76,6 @@ const Login = (props) => {
                       iconPosition="left"
                       placeholder="E-mail address"
                       name="email"
-                      value={formState.email}
                       onChange={handleChange}
                     />
                     <Form.Input
@@ -62,7 +84,6 @@ const Login = (props) => {
                       placeholder="Password"
                       type="password"
                       name="password"
-                      value={formState.password}
                       onChange={handleChange}
                     />
                     <Button color="teal" fluid size="large">
@@ -85,38 +106,48 @@ const Login = (props) => {
                   <Image src="logo.png" /> Create your Account
                 </Header>
     
-                <Form size="large">
+                <Form size="large" onSubmit={signupHandleFormSubmit}>
                   <Segment stacked>
                     <Form.Input
                       fluid
                       icon="address book"
                       iconPosition="left"
+                      name="name"
                       placeholder="First Name"
+                      onChange={sigUpHandleChange}
                     />
                     <Form.Input
                       fluid
                       icon="address book outline"
                       iconPosition="left"
+                      name="lastname"
                       placeholder="Last Name"
+                      onChange={sigUpHandleChange}
                     />
                     <Form.Input
                       fluid
                       icon="user"
+                      name="email"
                       iconPosition="left"
                       placeholder="E-mail address"
+                      onChange={sigUpHandleChange}
                     />
                     <Form.Input
                       fluid
                       icon="lock"
+                      name="password"
                       iconPosition="left"
                       placeholder="Password"
                       type="password"
+                      onChange={sigUpHandleChange}
                     />
                     <Form.Input
                       fluid
                       icon="phone"
+                      name="phone"
                       iconPosition="left"
                       placeholder="phone #"
+                      onChange={sigUpHandleChange}
                     />
                     <Button color="teal" fluid size="large">
                       Sign In
