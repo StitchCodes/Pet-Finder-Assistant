@@ -9,10 +9,13 @@ console.log("expiration", expiration);
 
 module.exports = {
   authMiddleware: function ({ req }) {
+    console.log(req.body.token);
+    console.log(req.query.token);
+    console.log(req.headers.authorization);
     let token = req.body.token || req.query.token || req.headers.authorization;
 
     if (req.headers.authorization) {
-      token = token.split("").pop().trim();
+      token = token.split(" ").pop().trim();
     }
 
     if (!token) {
@@ -20,7 +23,10 @@ module.exports = {
     }
 
     try {
+      console.log(token);
+      
       const { data } = jwt.verify(token, secret, { maxAge: expiration });
+      console.log(data);
       req.user = data;
     } catch {
       console.log("Invalid Token");
@@ -31,6 +37,7 @@ module.exports = {
 
   signToken: function ({ email, name, _id }) {
     const payload = { email, name, _id };
+    console.log(secret, expiration);
     return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
   },
 };
