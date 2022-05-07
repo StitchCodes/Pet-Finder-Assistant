@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Menu, Image } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
+import Logo from "../../assets/images/logo.png";
 
 class Header extends Component {
   state = { activeItem: 'home' }
@@ -13,8 +14,8 @@ class Header extends Component {
     return (
       <Menu fixed='top' inverted color='teal' size='massive'>
         <Menu.Item as='a' header>
-          <Image size='mini' src='../../assets/images/logo.png' style={{ marginRight: '1.5em' }} />
-          Pet Finder Assistant
+          <Image height="30" src={Logo} style={{ marginRight: '1.5em' }} />
+          Pawtroller
         </Menu.Item>
         <Link to="/">
           <Menu.Item

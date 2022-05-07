@@ -16,7 +16,7 @@ const Main = () => (
 
         <Grid.Row>
            <Grid.Column floated='right' width={5}>
-           <Link to="/helpout"><Button floated='right'>Add a Pet</Button></Link>
+           <Link to="/addpet"><Button floated='right'>Add a Pet</Button></Link>
            </Grid.Column>
         </Grid.Row>
 
