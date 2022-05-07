@@ -45,7 +45,6 @@ const resolvers = {
         // Create new user (sing up) and create jwt token
         addUser: async (parent, { email, nickname, name, lastname, phone, password }, context) => {
             const user = await User.create({email, nickname, name, lastname, phone, password});
-            console.log (user);
             const token = signToken(user);
             return {token}
         },
