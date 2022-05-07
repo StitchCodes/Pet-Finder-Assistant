@@ -11,6 +11,7 @@ import {
 } from "semantic-ui-react";
 import PetBackground from "../../assets/images/pets.png";
 
+
 const options = [
   { key: "d", text: "Dog", value: "dog" },
   { key: "c", text: "Cat", value: "cat" },
@@ -32,7 +33,6 @@ class addPetForm extends Component {
             <GridColumn>
               <Image src={PetBackground} />
             </GridColumn>
-
             <Grid.Column>
               <Form>
                 <Form.Group>
@@ -42,7 +42,6 @@ class addPetForm extends Component {
 
                   <Form.Select options={options} placeholder="Species" error />
                 </Form.Group>
-
                 <Form.Group inline>
                   <label>Gender</label>
                   <Form.Radio
@@ -58,7 +57,6 @@ class addPetForm extends Component {
                     onChange={this.handleChange}
                   />
                 </Form.Group>
-
                 <Form.TextArea
                   label="Description"
                   placeholder="Small description about the pet"
@@ -68,9 +66,7 @@ class addPetForm extends Component {
                   <label>Address where the pet was last seen</label>
                   <input />
                 </Form.Field>
-
                 <Button primary>Add Photo</Button>
-
                 <Button>Submit</Button>
               </Form>
             </Grid.Column>
@@ -82,4 +78,6 @@ class addPetForm extends Component {
   }
 }
 
+
 export default addPetForm;
+
