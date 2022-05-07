@@ -27,7 +27,7 @@ const IndividualPlacard = () => (
           <Card fluid>
               <Card.Content>
               <Grid.Column floated='left' width={3}>
-                <Image floated='left' verticalAlign='top' src={Dog1} size='medium' rounded />
+                <Image floated='left' verticalalign='top' src={Dog1} size='medium' rounded />
               </Grid.Column>
            
               <Grid.Column floated='left' width={12}>
@@ -59,7 +59,7 @@ const IndividualPlacard = () => (
                </Grid.Column>
 
                 <Grid.Column floated='right' width={1}>
-                    <button class="right floated ui negative button"> Lost </button>
+                    <button className="right floated ui negative button"> Lost </button>
                 </Grid.Column>
               </Card.Content>
 

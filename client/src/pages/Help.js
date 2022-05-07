@@ -6,9 +6,11 @@ import {
   Divider,
   Icon,
   Container,
+
 } from "semantic-ui-react";
 import Checkout from "../components/Checkout";
 // import PaymentForm from "../components/PaymentForm";
+
 
 const Help = () => (
   <div>
@@ -24,6 +26,7 @@ const Help = () => (
       <Segment placeholder>
         <Grid columns={2} stackable textAlign="center">
           <Divider vertical></Divider>
+
 
           <Grid.Row verticalAlign="middle">
             <Grid.Column>
