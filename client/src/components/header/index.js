@@ -2,10 +2,13 @@ import React, { Component } from 'react'
 import { Button, Menu, Image } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 import Logo from "../../assets/images/logo.png";
+import Auth from '../../utils/auth';
+
 
 class Header extends Component {
+  
   state = { activeItem: 'home' }
-
+  
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
   render() {

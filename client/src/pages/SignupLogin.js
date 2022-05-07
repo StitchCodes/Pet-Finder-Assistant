@@ -7,17 +7,16 @@ import Auth from '../utils/auth';
 
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: '', password: ''});
-  const [newFormState,setNewFormState] = useState({email:'', name:'', lastname:'', password: '', nickname: '', phone: ''});
+  const [newFormState,setNewFormState] = useState({email:'', name:'', lastname:'', password: '', phone: ''});
   const [login, {error, data}] = useMutation(LOGIN);
   const [newUser, {error1, data1}] = useMutation(NEWUSER);
+
 
   // Update form state on Input for Login
   const handleChange = (event) => {
     const {name, value} = event.target;
-    
+  
     setFormState({ ...formState, [name]: value});
-    setNewFormState({ ...newFormState, [name]: value});
-    console.log(formState);
   };
 
   // Submit Form function for Login
@@ -38,7 +37,6 @@ const Login = (props) => {
     const {name, value} = event.target;
   
     setNewFormState({ ...newFormState, [name]: value});
-    console.log(newFormState);
   };
 
    // Submit Form function for sign up
@@ -46,9 +44,9 @@ const Login = (props) => {
     event.preventDefault();
     
     try {
-      const {newUserData} = await newUser({variables: { ...newFormState}});
-      
-      Auth.login(newUserData.newUser.token);
+      const {data} = await newUser({variables: { ...newFormState}});
+      console.log(data);
+      Auth.login(data.addUser.token);
     } catch (e) {
       console.error(e);
     }
