@@ -7,8 +7,7 @@ import Footer from './components/footer';
 import Main from './pages/Main';
 import Help from './pages/Help';
 import SignupLogin from './pages/SignupLogin';
-
-// import addPet from './pages/addPet';
+import AddPet from './pages/addPet';
 
 import IndividualPlacard from './pages/IndividualPlacard';
 

@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Pawtroller",
+  "name": "Pawtroller: Your Pet Finder Assistant",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,18 +8,18 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "icon152.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "152x152"
     },
     {
-      "src": "logo512.png",
+      "src": "icon320.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "320x320"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
+  "theme_color": "#008080",
   "background_color": "#ffffff"
 }
