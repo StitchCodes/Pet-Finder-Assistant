@@ -91,7 +91,6 @@ class Header extends Component {
             onClick={this.handleItemClick}
           />
         </Link>
-        {/* <UsernameToken  /> */}
         {/* LOGIN/LOGOUT BUTTON */}
         <LogStatus />        
       </Menu>
