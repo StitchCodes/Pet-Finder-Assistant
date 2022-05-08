@@ -14,7 +14,9 @@ import Checkout from "../components/Checkout";
 
 const Help = () => (
   <div>
-    <Container style={{ marginTop: "10em" }}>
+    <Container  style={{ marginTop: '8em' , "margin-bottom": '3rem' }} verticalAlign='middle'>
+      <Segment   textallign="center"
+              style={{ height: "75vh" }}>
       <Header as="h2" icon textAlign="center">
         <Icon name="handshake outline" circular />
         <Header.Content>
@@ -24,7 +26,7 @@ const Help = () => (
       </Header>
 
       <Segment placeholder>
-        <Grid columns={2} stackable textAlign="center">
+        <Grid columns={2} stackable textAlign="center" verticalAlign='middle'>
           <Divider vertical></Divider>
 
 
@@ -49,6 +51,7 @@ const Help = () => (
             </Grid.Column>
           </Grid.Row>
         </Grid>
+      </Segment>
       </Segment>
     </Container>
   </div>

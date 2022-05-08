@@ -29,8 +29,8 @@ class Header extends Component {
       return (
         <Menu.Menu position='right'>
         <Link to="/">
-          <Menu.Item onClick={handleLogout}>
-            <Button primary>Log Out!</Button>
+          <Menu.Item >
+            <Button onClick={handleLogout} primary>Log Out!</Button>
           </Menu.Item>
         </Link>
       </Menu.Menu>
@@ -72,10 +72,12 @@ class Header extends Component {
       return (
 
       <Menu fixed='top' inverted color='teal' size='massive'>
-        <Menu.Item as='a' header>
+        <Link to="/">
+        <Menu.Item   name='Logo' as='a' header >
           <Image height="30" src={Logo} style={{ marginRight: '1.5em' }} />
           Pawtroller
         </Menu.Item>
+        </Link>
         <Link to="/">
           <Menu.Item
             name='Lost and Found'

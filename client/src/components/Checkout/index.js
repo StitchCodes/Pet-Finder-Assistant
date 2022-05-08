@@ -65,6 +65,7 @@ const Checkout = () => {
     <div>
       {items.map((item) => (
         <Button
+         style={{"margin-bottom": '1rem' }}
           primary
           key={item.id}
           onClick={() => redirectToCheckout(item.id)}
