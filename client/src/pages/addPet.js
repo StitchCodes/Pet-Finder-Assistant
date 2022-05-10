@@ -5,13 +5,13 @@ import { Container, Form, Button, Segment, Grid, GridColumn, Image, Divider } fr
 import PetBackground from "../assets/images/pets.png";
 import Auth from '../utils/auth';
 import Datepicker from '../components/DatePicker';
+import Autocomplete from "react-google-autocomplete";
 
 const AddPetForm = () => {
 
   const SpeciesOptions = [
     { key: "d", text: "Dog", value: "dog" },
     { key: "c", text: "Cat", value: "cat" },
-    { key: "o", text: "Other", value: "other" },
   ];
 
   const ColorOptions = [
@@ -21,7 +21,6 @@ const AddPetForm = () => {
     { key: "ginger", text: "Ginger", value: "ginger" },
     { key: "gray", text: "Gray", value: "gray" },
     { key: "white", text: "White", value: "white" },
-    { key: "other", text: "Other", value: "other" },
   ];
 
   const [formState, setFormState] = 
@@ -36,7 +35,8 @@ const AddPetForm = () => {
     petDateLF: '', 
     petStatus: '', 
     petPhoto:'', 
-    petReward: ''
+    petReward: '',
+    petLastAddress: '',
   });
   const [validated] = useState(false);
 
@@ -161,6 +161,7 @@ const AddPetForm = () => {
           </Form.Group>
           {/* PET COLOR */}
           <Form.Select 
+                label= "Color"
                options={ColorOptions} 
                placeholder="Color" 
                name="petColor" 
@@ -175,19 +176,21 @@ const AddPetForm = () => {
           />
         {/* PET LAST SEEN */}
         <Form.Field>
-          <label>Date last seen:</label>
+          <label>Date last seen</label>
           <Datepicker
           name="petDateLF"
           onChange={datePickerHandleChange} />
         </Form.Field>
-
+     {/* PET ADDRESS */}
           <Form.Field>
-            <Form.Input 
-            fluid label="Address where the pet was last seen" 
-            placeholder="Name" 
-            name="location" 
-            onChange={handleChange}
-            />
+            <Form.Field>
+                  <label>Address where the pet was last seen</label>
+                    <Autocomplete
+                    apiKey={'AIzaSyAm_8uIOHe0Gr1lpNueCHZOcawTLEvWfno'}
+                    name="petLastAddress"
+                    onChange={handleChange} 
+                  />
+            </Form.Field>
           </Form.Field>
           {/* PET REWARD */}
           <Form.Field>

@@ -10,6 +10,7 @@ import {
   Divider,
 } from "semantic-ui-react";
 import PetBackground from "../../assets/images/pets.png";
+import Autocomplete from "react-google-autocomplete";
 
 
 const options = [
@@ -22,6 +23,9 @@ class addPetForm extends Component {
   state = {};
 
   handleChange = (e, { value }) => this.setState({ value });
+  handleDropdownChange (e, data) {
+    const { name, value } = data
+  }
 
   render() {
     const { value } = this.state;
@@ -61,11 +65,13 @@ class addPetForm extends Component {
                   label="Description"
                   placeholder="Small description about the pet"
                 />
-
-                <Form.Field>
-                  <label>Address where the pet was last seen</label>
-                  <input />
-                </Form.Field>
+                  <label>Place where the pet was last seen</label>
+                  <Autocomplete
+                  apiKey={'AIzaSyAm_8uIOHe0Gr1lpNueCHZOcawTLEvWfno'}
+                  onPlaceSelected={(place) => {
+                    console.log(place);
+                  }}
+                />
                 <Button primary>Add Photo</Button>
                 <Button>Submit</Button>
               </Form>
