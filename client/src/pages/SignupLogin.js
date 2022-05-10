@@ -53,19 +53,18 @@ const Login = (props) => {
   };
 
   return (
-      <Container>
+      <Container  style={{ marginTop: '8em' , "margin-bottom": '3rem' }}>
       <Segment>
         <Grid columns={2} relaxed="very">
-          <GridColumn>
+          <GridColumn   verticalallign="middle">
             <Grid
               textallign="center"
-              style={{ height: "100vh" }}
-              verticalallign="middle"
+              style={{ height: "75vh" }}
             >
               {/* LOGIN TO YOUR ACCOUNT */}
-              <GridColumn style={{ maxWidth: 450 }}>
+              <GridColumn style={{ maxWidth: 450 }}   verticalallign="middle">
                 <Header as="h2" color="teal" textallign="center">
-                  <Image src="logo.png" /> Log-in to your Account
+                  Log-in to your Account
                 </Header>
     
                 <Form size="large" onSubmit={handleFormSubmit}>
@@ -97,13 +96,12 @@ const Login = (props) => {
           <GridColumn>
             <Grid
               textallign="center"
-              style={{ height: "100vh" }}
-              verticalallign="middle"
+              style={{ height: "75vh" }}
             >
               {/* CREATE ACCOUNT */}
-              <GridColumn style={{ maxWidth: 450 }}>
+              <GridColumn style={{ maxWidth: 450 }}   verticalallign="middle">
                 <Header as="h2" color="teal" textallign="center">
-                  <Image src="logo.png" /> Create your Account
+                 Create your Account
                 </Header>
     
                 <Form size="large" onSubmit={signupHandleFormSubmit}>

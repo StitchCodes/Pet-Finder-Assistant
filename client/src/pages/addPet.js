@@ -4,14 +4,26 @@ import { ADDPLACARD } from '../utils/mutations';
 import { Container, Form, Button, Segment, Grid, GridColumn, Image, Divider } from "semantic-ui-react";
 import PetBackground from "../assets/images/pets.png";
 import Auth from '../utils/auth';
+import Datepicker from '../components/DatePicker';
 
 const AddPetForm = () => {
 
-  const options = [
+  const SpeciesOptions = [
     { key: "d", text: "Dog", value: "dog" },
     { key: "c", text: "Cat", value: "cat" },
     { key: "o", text: "Other", value: "other" },
   ];
+
+  const ColorOptions = [
+    { key: "black", text: "Black", value: "black" },
+    { key: "brown", text: "Brown", value: "brown" },
+    { key: "cream", text: "Cream", value: "cream" },
+    { key: "ginger", text: "Ginger", value: "ginger" },
+    { key: "gray", text: "Gray", value: "gray" },
+    { key: "white", text: "White", value: "white" },
+    { key: "other", text: "Other", value: "other" },
+  ];
+
   const [formState, setFormState] = 
   useState({
     petAuthor: '',
@@ -67,16 +79,31 @@ const AddPetForm = () => {
   };
  
   return (
-  <Container>
-  <Segment>
+    <Container style={{ marginTop: '8em', "margin-bottom": '6rem' }} >
+  <Segment >
     <Grid columns={2} relaxed="very">
-      <GridColumn>
+      <GridColumn verticalAlign='middle'>
         <Image src={PetBackground} />
       </GridColumn>
 
       <Grid.Column>
-        <Form > 
-          <Form.Group>
+        <Form>
+          <Form.Group inline >
+              <label>Status</label>
+              <Form.Radio
+                label="Lost"
+                name="petStatus"
+                value="lost"
+                onChange={handleChange}
+              />
+              <Form.Radio
+                label="Found"
+                name="petStatus"
+                value="found"
+                onChange={handleChange}
+              />
+            </Form.Group>
+
             <Form.Field>
               <Form.Input 
                 fluid label="Name" 
@@ -87,28 +114,36 @@ const AddPetForm = () => {
             </Form.Field>
 
             <Form.Select 
-               options={options} 
-               placeholder="Species" 
+               fluid label="Species" 
+               options={SpeciesOptions} 
+               placeholder="Select" 
                name="petSpecies" 
                //onChange={handleChange}
-               />
-          </Form.Group>
+             />
 
           <Form.Group inline>
             <label>Gender</label>
             <Form.Radio
               label="Male"
               name="petGender"
-              value="sm"
-              //onChange={handleChange}
+              value="male"
+              onChange={handleChange}
             />
+                
             <Form.Radio
               label="Female"
               name="petGender"
-              value="md"
-              //onChange={handleChange}
+              value="female"
+              onChange={handleChange}
             />
           </Form.Group>
+
+          <Form.Select 
+               options={ColorOptions} 
+               placeholder="Species" 
+               name="petColor" 
+               onChange={handleChange}
+          />
 
           <Form.TextArea
             label="Description"
@@ -117,6 +152,14 @@ const AddPetForm = () => {
             onChange={handleChange}
           />
 
+        <Form.Field>
+          <label>Date last seen:</label>
+          <Datepicker
+          name="petDateLF"
+          onChange={handleChange} />
+        </Form.Field>
+
+
           <Form.Field>
             <Form.Input 
             fluid label="Address where the pet was last seen" 
@@ -124,6 +167,14 @@ const AddPetForm = () => {
             name="location" 
             onChange={handleChange}
             />
+          </Form.Field>
+
+          <Form.Field>
+            <Form.Input 
+            fluid label="Reward (Optional)" 
+            placeholder="Reward" 
+            name="petReward" 
+            onChange={handleChange}/>
           </Form.Field>
 
 
