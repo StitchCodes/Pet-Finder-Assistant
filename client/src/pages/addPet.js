@@ -6,7 +6,7 @@ import PetBackground from "../assets/images/pets.png";
 import Auth from '../utils/auth';
 import Datepicker from '../components/DatePicker';
 
-const AddPetForm = (props) => {
+const AddPetForm = () => {
 
   const SpeciesOptions = [
     { key: "d", text: "Dog", value: "dog" },
@@ -26,6 +26,7 @@ const AddPetForm = (props) => {
 
   const [formState, setFormState] = 
   useState({
+    petAuthor: '',
     location: '', 
     petName: '', 
     petSpecies: '', 
@@ -37,23 +38,41 @@ const AddPetForm = (props) => {
     petPhoto:'', 
     petReward: ''
   });
+  const [validated] = useState(false);
 
-  const [addPlacard, {error, data}] = useMutation(ADDPLACARD);
+  const [ addPlacard ] = useMutation(ADDPLACARD);
+
+  // const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+  // if (!token) {
+  //   alert("need to be logged in to add a pet");
+  //   return false;
+  // }
+  // const placardAuthorData = Auth.getUser().data._id;
+  // setFormState({...formState, placardAuthor: placardAuthorData});
+
 
   // Update form state on Input for addPlacard
   const handleChange = (event) => {
     const {name, value} = event.target;
-  
+   
+      // event.preventDefault();
+      // event.stopPropagation();
+
     setFormState({ ...formState, [name]: value});
   };
-
+  
+  
   // Submit Form function for addPlacard
   const handleFormSubmit = async (event) => {
-    event.preventDefault();
-    
     try {
-      const {data} = await addPlacard({variables: { ...formState}});
-      return data;
+      alert("click on the submit button");
+      const {data} = await addPlacard({
+        variables: { ...formState}
+      });
+      if (!data) {
+        throw new Error('something went wrong!');
+      }
     } catch (e) {
       console.error(e);
     }
@@ -90,7 +109,8 @@ const AddPetForm = (props) => {
                 fluid label="Name" 
                 placeholder="Name" 
                 name="name" 
-                onChange={handleChange}/>
+                //onChange={handleChange}
+                />
             </Form.Field>
 
             <Form.Select 
@@ -98,7 +118,8 @@ const AddPetForm = (props) => {
                options={SpeciesOptions} 
                placeholder="Select" 
                name="petSpecies" 
-               onChange={handleChange}/>
+               //onChange={handleChange}
+             />
 
           <Form.Group inline>
             <label>Gender</label>
@@ -108,6 +129,7 @@ const AddPetForm = (props) => {
               value="male"
               onChange={handleChange}
             />
+                
             <Form.Radio
               label="Female"
               name="petGender"
@@ -120,7 +142,8 @@ const AddPetForm = (props) => {
                options={ColorOptions} 
                placeholder="Species" 
                name="petColor" 
-               onChange={handleChange}/>
+               onChange={handleChange}
+          />
 
           <Form.TextArea
             label="Description"
@@ -141,8 +164,9 @@ const AddPetForm = (props) => {
             <Form.Input 
             fluid label="Address where the pet was last seen" 
             placeholder="Name" 
-            name="petLocation" 
-            onChange={handleChange}/>
+            name="location" 
+            onChange={handleChange}
+            />
           </Form.Field>
 
           <Form.Field>
@@ -153,9 +177,8 @@ const AddPetForm = (props) => {
             onChange={handleChange}/>
           </Form.Field>
 
-          <Button primary>Add Photo</Button>
 
-          <Button>Submit</Button>
+          <Button id="submitButton" onSubmit={handleFormSubmit} >Submit</Button>
         </Form>
       </Grid.Column>
     </Grid>
