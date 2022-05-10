@@ -70,8 +70,11 @@ const AddPetForm = () => {
   };
 
   // Radial handle
-  const handleRadialChange = (e, date) => {
-    const { name, value } = date;
+  // const handleRadialChange = (e, { value }) => this.setState({ value })
+  const handleRadialChange = (e, data) => {
+    const { name, value } = data;
+    console.log('data name', name);
+    console.log('data value', value);
     
     setFormState({ ...formState, [name]: value});
   };
@@ -115,13 +118,15 @@ const AddPetForm = () => {
               <Form.Radio
                 label="Lost"
                 name="petStatus"
-                value="lost"
+                value="false"
+                // checked={this.state.value === 'lost'}
                 onChange={handleRadialChange}
               />
               <Form.Radio
                 label="Found"
                 name="petStatus"
-                value="found"
+                value="true"
+                // checked={this.state.value === 'found'}
                 onChange={handleRadialChange}
               />
             </Form.Group>
