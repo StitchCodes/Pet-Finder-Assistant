@@ -13,6 +13,17 @@ const AddPetForm = () => {
     { key: "d", text: "Dog", value: "dog" },
     { key: "c", text: "Cat", value: "cat" },
   ];
+  
+  const statusOpt = [
+    { key: 'L', text: "Lost", value: "lost"},
+    { key: 'F', text: "Found", value: "found"},
+  ];
+
+  const genderOptions = [
+    { key: "F", text: "Female", value: "female" },
+    { key: "M", text: "Male", value: "male" },
+  ];
+
 
   const ColorOptions = [
     { key: "black", text: "Black", value: "black" },
@@ -48,14 +59,12 @@ const AddPetForm = () => {
   //   alert("need to be logged in to add a pet");
   //   return false;
   // }
-  // const placardAuthorData = Auth.getUser().data._id;
-  // setFormState({...formState, placardAuthor: placardAuthorData});
+  // 
 
 
   // Update form state on Input for addPlacard
   const handleChange = (event) => {
     const {name, value} = event.target;
-    console.log('Event target: ', event.target);
     // event.preventDefault();
     // event.stopPropagation();
 
@@ -65,16 +74,6 @@ const AddPetForm = () => {
   // Select handle
   const handleDropdownChange = (e, result) => {
     const { name, value } = result;
-    
-    setFormState({ ...formState, [name]: value});
-  };
-
-  // Radial handle
-  // const handleRadialChange = (e, { value }) => this.setState({ value })
-  const handleRadialChange = (e, data) => {
-    const { name, value } = data;
-    console.log('data name', name);
-    console.log('data value', value);
     
     setFormState({ ...formState, [name]: value});
   };
@@ -90,7 +89,8 @@ const AddPetForm = () => {
   // Submit Form function for addPlacard
   const handleFormSubmit = async (event) => {
     try {
-      alert("click on the submit button");
+      const placardAuthorData = Auth.getUser().data._id;
+      setFormState({...formState, placardAuthor: placardAuthorData});
       const {data} = await addPlacard({
         variables: { ...formState}
       });
@@ -113,23 +113,13 @@ const AddPetForm = () => {
       <Grid.Column>
         <Form  onSubmit={handleFormSubmit} >
           {/* LOST OR FOUND */}
-          <Form.Group inline >
-              <label>Status</label>
-              <Form.Radio
-                label="Lost"
-                name="petStatus"
-                value="false"
-                // checked={this.state.value === 'lost'}
-                onChange={handleRadialChange}
-              />
-              <Form.Radio
-                label="Found"
-                name="petStatus"
-                value="true"
-                // checked={this.state.value === 'found'}
-                onChange={handleRadialChange}
-              />
-            </Form.Group>
+          <Form.Select 
+               fluid label="Status" 
+               options={statusOpt} 
+               placeholder="Select" 
+               name="petStatus" 
+               onChange={handleDropdownChange}
+             />
             {/* PET NAME */}
             <Form.Field>
               <Form.Input 
@@ -148,22 +138,14 @@ const AddPetForm = () => {
                onChange={handleDropdownChange}
              />
           {/* PET GENDER */}
-          <Form.Group inline>
-            <label>Gender</label>
-            <Form.Radio
-              label="Male"
-              name="petGender"
-              value="male"
-              onChange={handleRadialChange}
-            />
-                
-            <Form.Radio
-              label="Female"
-              name="petGender"
-              value="female"
-              onChange={handleRadialChange}
-            />
-          </Form.Group>
+          <Form.Select 
+            fluid label="Gender" 
+            options={genderOptions} 
+            placeholder="Select" 
+            name="petGender" 
+            onChange={handleDropdownChange}
+          />
+
           {/* PET COLOR */}
           <Form.Select 
                 label= "Color"
@@ -189,12 +171,12 @@ const AddPetForm = () => {
      {/* PET ADDRESS */}
           <Form.Field>
             <Form.Field>
-                  <label>Address where the pet was last seen</label>
-                    <Autocomplete
-                    apiKey={'AIzaSyAm_8uIOHe0Gr1lpNueCHZOcawTLEvWfno'}
-                    name="petLastAddress"
-                    onChange={handleChange} 
-                  />
+              <label>Address where the pet was last seen</label>
+                <Autocomplete
+                apiKey={'AIzaSyAm_8uIOHe0Gr1lpNueCHZOcawTLEvWfno'}
+                name="location"
+                onChange={handleChange} 
+              />
             </Form.Field>
           </Form.Field>
           {/* PET REWARD */}
