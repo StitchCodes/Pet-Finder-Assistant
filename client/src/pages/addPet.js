@@ -5,7 +5,7 @@ import { Container, Form, Button, Segment, Grid, GridColumn, Image, Divider } fr
 import PetBackground from "../assets/images/pets.png";
 import Auth from '../utils/auth';
 
-const AddPetForm = (props) => {
+const AddPetForm = () => {
 
   const options = [
     { key: "d", text: "Dog", value: "dog" },
@@ -14,6 +14,7 @@ const AddPetForm = (props) => {
   ];
   const [formState, setFormState] = 
   useState({
+    petAuthor: '',
     location: '', 
     petName: '', 
     petSpecies: '', 
@@ -25,23 +26,41 @@ const AddPetForm = (props) => {
     petPhoto:'', 
     petReward: ''
   });
+  const [validated] = useState(false);
 
-  const [addPlacard, {error, data}] = useMutation(ADDPLACARD);
+  const [ addPlacard ] = useMutation(ADDPLACARD);
+
+  // const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+  // if (!token) {
+  //   alert("need to be logged in to add a pet");
+  //   return false;
+  // }
+  // const placardAuthorData = Auth.getUser().data._id;
+  // setFormState({...formState, placardAuthor: placardAuthorData});
+
 
   // Update form state on Input for addPlacard
   const handleChange = (event) => {
     const {name, value} = event.target;
-  
+   
+      // event.preventDefault();
+      // event.stopPropagation();
+
     setFormState({ ...formState, [name]: value});
   };
-
+  
+  
   // Submit Form function for addPlacard
   const handleFormSubmit = async (event) => {
-    event.preventDefault();
-    
     try {
-      const {data} = await addPlacard({variables: { ...formState}});
-      return data;
+      alert("click on the submit button");
+      const {data} = await addPlacard({
+        variables: { ...formState}
+      });
+      if (!data) {
+        throw new Error('something went wrong!');
+      }
     } catch (e) {
       console.error(e);
     }
@@ -56,21 +75,23 @@ const AddPetForm = (props) => {
       </GridColumn>
 
       <Grid.Column>
-        <Form>
+        <Form > 
           <Form.Group>
             <Form.Field>
               <Form.Input 
                 fluid label="Name" 
                 placeholder="Name" 
                 name="name" 
-                onChange={handleChange}/>
+                //onChange={handleChange}
+                />
             </Form.Field>
 
             <Form.Select 
                options={options} 
                placeholder="Species" 
                name="petSpecies" 
-               onChange={handleChange}/>
+               //onChange={handleChange}
+               />
           </Form.Group>
 
           <Form.Group inline>
@@ -79,13 +100,13 @@ const AddPetForm = (props) => {
               label="Male"
               name="petGender"
               value="sm"
-              onChange={handleChange}
+              //onChange={handleChange}
             />
             <Form.Radio
               label="Female"
               name="petGender"
               value="md"
-              onChange={handleChange}
+              //onChange={handleChange}
             />
           </Form.Group>
 
@@ -101,12 +122,12 @@ const AddPetForm = (props) => {
             fluid label="Address where the pet was last seen" 
             placeholder="Name" 
             name="location" 
-            onChange={handleChange}/>
+            onChange={handleChange}
+            />
           </Form.Field>
 
-          <Button primary>Add Photo</Button>
 
-          <Button>Submit</Button>
+          <Button id="submitButton" onSubmit={handleFormSubmit} >Submit</Button>
         </Form>
       </Grid.Column>
     </Grid>

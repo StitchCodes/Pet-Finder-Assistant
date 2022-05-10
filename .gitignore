@@ -4,6 +4,7 @@ package-lock.json
 /package-lock.json
 /node_modules/
 .env
+temp.js
 tempfile.js
 .eslintcache
 client/.eslintcache

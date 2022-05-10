@@ -33,7 +33,7 @@ const Login = (props) => {
   };
 
   // Update form state on Input for sing up
-  const sigUpHandleChange = (event) => {
+  const signUpHandleChange = (event) => {
     const {name, value} = event.target;
   
     setNewFormState({ ...newFormState, [name]: value});
@@ -114,7 +114,7 @@ const Login = (props) => {
                       iconPosition="left"
                       name="name"
                       placeholder="First Name"
-                      onChange={sigUpHandleChange}
+                      onChange={signUpHandleChange}
                     />
                     <Form.Input
                       fluid
@@ -122,7 +122,7 @@ const Login = (props) => {
                       iconPosition="left"
                       name="lastname"
                       placeholder="Last Name"
-                      onChange={sigUpHandleChange}
+                      onChange={signUpHandleChange}
                     />
                     <Form.Input
                       fluid
@@ -130,7 +130,7 @@ const Login = (props) => {
                       name="email"
                       iconPosition="left"
                       placeholder="E-mail address"
-                      onChange={sigUpHandleChange}
+                      onChange={signUpHandleChange}
                     />
                     <Form.Input
                       fluid
@@ -139,7 +139,7 @@ const Login = (props) => {
                       iconPosition="left"
                       placeholder="Password"
                       type="password"
-                      onChange={sigUpHandleChange}
+                      onChange={signUpHandleChange}
                     />
                     <Form.Input
                       fluid
@@ -147,7 +147,7 @@ const Login = (props) => {
                       name="phone"
                       iconPosition="left"
                       placeholder="phone #"
-                      onChange={sigUpHandleChange}
+                      onChange={signUpHandleChange}
                     />
                     <Button color="teal" fluid size="large">
                       Sign In
