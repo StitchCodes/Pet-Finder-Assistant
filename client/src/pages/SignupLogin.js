@@ -33,7 +33,7 @@ const Login = (props) => {
   };
 
   // Update form state on Input for sing up
-  const sigUpHandleChange = (event) => {
+  const signUpHandleChange = (event) => {
     const {name, value} = event.target;
   
     setNewFormState({ ...newFormState, [name]: value});
@@ -53,19 +53,18 @@ const Login = (props) => {
   };
 
   return (
-      <Container>
+      <Container  style={{ marginTop: '8em' , "margin-bottom": '3rem' }}>
       <Segment>
         <Grid columns={2} relaxed="very">
-          <GridColumn>
+          <GridColumn   verticalallign="middle">
             <Grid
               textallign="center"
-              style={{ height: "100vh" }}
-              verticalallign="middle"
+              style={{ height: "75vh" }}
             >
               {/* LOGIN TO YOUR ACCOUNT */}
-              <GridColumn style={{ maxWidth: 450 }}>
+              <GridColumn style={{ maxWidth: 450 }}   verticalallign="middle">
                 <Header as="h2" color="teal" textallign="center">
-                  <Image src="logo.png" /> Log-in to your Account
+                  Log-in to your Account
                 </Header>
     
                 <Form size="large" onSubmit={handleFormSubmit}>
@@ -97,13 +96,12 @@ const Login = (props) => {
           <GridColumn>
             <Grid
               textallign="center"
-              style={{ height: "100vh" }}
-              verticalallign="middle"
+              style={{ height: "75vh" }}
             >
               {/* CREATE ACCOUNT */}
-              <GridColumn style={{ maxWidth: 450 }}>
+              <GridColumn style={{ maxWidth: 450 }}   verticalallign="middle">
                 <Header as="h2" color="teal" textallign="center">
-                  <Image src="logo.png" /> Create your Account
+                 Create your Account
                 </Header>
     
                 <Form size="large" onSubmit={signupHandleFormSubmit}>
@@ -114,7 +112,7 @@ const Login = (props) => {
                       iconPosition="left"
                       name="name"
                       placeholder="First Name"
-                      onChange={sigUpHandleChange}
+                      onChange={signUpHandleChange}
                     />
                     <Form.Input
                       fluid
@@ -122,7 +120,7 @@ const Login = (props) => {
                       iconPosition="left"
                       name="lastname"
                       placeholder="Last Name"
-                      onChange={sigUpHandleChange}
+                      onChange={signUpHandleChange}
                     />
                     <Form.Input
                       fluid
@@ -130,7 +128,7 @@ const Login = (props) => {
                       name="email"
                       iconPosition="left"
                       placeholder="E-mail address"
-                      onChange={sigUpHandleChange}
+                      onChange={signUpHandleChange}
                     />
                     <Form.Input
                       fluid
@@ -139,7 +137,7 @@ const Login = (props) => {
                       iconPosition="left"
                       placeholder="Password"
                       type="password"
-                      onChange={sigUpHandleChange}
+                      onChange={signUpHandleChange}
                     />
                     <Form.Input
                       fluid
@@ -147,7 +145,7 @@ const Login = (props) => {
                       name="phone"
                       iconPosition="left"
                       placeholder="phone #"
-                      onChange={sigUpHandleChange}
+                      onChange={signUpHandleChange}
                     />
                     <Button color="teal" fluid size="large">
                       Sign In
