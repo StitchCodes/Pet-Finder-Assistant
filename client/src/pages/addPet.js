@@ -55,10 +55,31 @@ const AddPetForm = () => {
   // Update form state on Input for addPlacard
   const handleChange = (event) => {
     const {name, value} = event.target;
-   
-      // event.preventDefault();
-      // event.stopPropagation();
+    console.log('Event target: ', event.target);
+    // event.preventDefault();
+    // event.stopPropagation();
 
+    setFormState({ ...formState, [name]: value});
+  };
+
+  // Select handle
+  const handleDropdownChange = (e, result) => {
+    const { name, value } = result;
+    
+    setFormState({ ...formState, [name]: value});
+  };
+
+  // Radial handle
+  const handleRadialChange = (e, date) => {
+    const { name, value } = date;
+    
+    setFormState({ ...formState, [name]: value});
+  };
+
+  // Datepicker handle
+  const datePickerHandleChange = date => {
+    const { name, value } = date.format();
+    
     setFormState({ ...formState, [name]: value});
   };
   
@@ -87,78 +108,78 @@ const AddPetForm = () => {
       </GridColumn>
 
       <Grid.Column>
-        <Form>
+        <Form  onSubmit={handleFormSubmit} >
+          {/* LOST OR FOUND */}
           <Form.Group inline >
               <label>Status</label>
               <Form.Radio
                 label="Lost"
                 name="petStatus"
                 value="lost"
-                onChange={handleChange}
+                onChange={handleRadialChange}
               />
               <Form.Radio
                 label="Found"
                 name="petStatus"
                 value="found"
-                onChange={handleChange}
+                onChange={handleRadialChange}
               />
             </Form.Group>
-
+            {/* PET NAME */}
             <Form.Field>
               <Form.Input 
                 fluid label="Name" 
                 placeholder="Name" 
-                name="name" 
-                //onChange={handleChange}
+                name="petName" 
+                onChange={handleChange}
                 />
             </Form.Field>
-
+            {/* PET SPECIES */}
             <Form.Select 
                fluid label="Species" 
                options={SpeciesOptions} 
                placeholder="Select" 
                name="petSpecies" 
-               //onChange={handleChange}
+               onChange={handleDropdownChange}
              />
-
+          {/* PET GENDER */}
           <Form.Group inline>
             <label>Gender</label>
             <Form.Radio
               label="Male"
               name="petGender"
               value="male"
-              onChange={handleChange}
+              onChange={handleRadialChange}
             />
                 
             <Form.Radio
               label="Female"
               name="petGender"
               value="female"
-              onChange={handleChange}
+              onChange={handleRadialChange}
             />
           </Form.Group>
-
+          {/* PET COLOR */}
           <Form.Select 
                options={ColorOptions} 
-               placeholder="Species" 
+               placeholder="Color" 
                name="petColor" 
-               onChange={handleChange}
+               onChange={handleDropdownChange}
           />
-
+        {/* PET DESCRIPTION */}
           <Form.TextArea
             label="Description"
             name="petDesc"
             placeholder="Small description about the pet"
             onChange={handleChange}
           />
-
+        {/* PET LAST SEEN */}
         <Form.Field>
           <label>Date last seen:</label>
           <Datepicker
           name="petDateLF"
-          onChange={handleChange} />
+          onChange={datePickerHandleChange} />
         </Form.Field>
-
 
           <Form.Field>
             <Form.Input 
@@ -168,7 +189,7 @@ const AddPetForm = () => {
             onChange={handleChange}
             />
           </Form.Field>
-
+          {/* PET REWARD */}
           <Form.Field>
             <Form.Input 
             fluid label="Reward (Optional)" 
@@ -177,8 +198,7 @@ const AddPetForm = () => {
             onChange={handleChange}/>
           </Form.Field>
 
-
-          <Button id="submitButton" onSubmit={handleFormSubmit} >Submit</Button>
+          <Button id="submitButton">Submit</Button>
         </Form>
       </Grid.Column>
     </Grid>
