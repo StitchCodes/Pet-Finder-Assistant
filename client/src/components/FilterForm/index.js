@@ -3,6 +3,7 @@ import {
   Form,
   Card,
 } from 'semantic-ui-react';
+import Autocomplete from "react-google-autocomplete";
         
 const FilterForm = () => (
     <div>
@@ -38,7 +39,13 @@ const FilterForm = () => (
                   <Form.Field label='This week' control='input' type='checkbox' />
                   <Form.Field label='That month' control='input' type='checkbox' />
                 </Form.Group>
-                <Form.Field label='Last address seen' control='textarea' rows='3' />
+                <label><strong>Last address seen</strong></label>
+                <Autocomplete
+                  apiKey={'AIzaSyAm_8uIOHe0Gr1lpNueCHZOcawTLEvWfno'}
+                  onPlaceSelected={(place) => {
+                    console.log(place);
+                  }}
+                />
                 <Form.Field control='button'>
                     Filter
                 </Form.Field>

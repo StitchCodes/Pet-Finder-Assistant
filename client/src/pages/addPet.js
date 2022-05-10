@@ -5,14 +5,25 @@ import { Container, Form, Button, Segment, Grid, GridColumn, Image, Divider } fr
 import PetBackground from "../assets/images/pets.png";
 import Auth from '../utils/auth';
 import Datepicker from '../components/DatePicker';
+import Autocomplete from "react-google-autocomplete";
 
 const AddPetForm = () => {
 
   const SpeciesOptions = [
     { key: "d", text: "Dog", value: "dog" },
     { key: "c", text: "Cat", value: "cat" },
-    { key: "o", text: "Other", value: "other" },
   ];
+  
+  const statusOpt = [
+    { key: 'L', text: "Lost", value: "lost"},
+    { key: 'F', text: "Found", value: "found"},
+  ];
+
+  const genderOptions = [
+    { key: "F", text: "Female", value: "female" },
+    { key: "M", text: "Male", value: "male" },
+  ];
+
 
   const ColorOptions = [
     { key: "black", text: "Black", value: "black" },
@@ -21,7 +32,6 @@ const AddPetForm = () => {
     { key: "ginger", text: "Ginger", value: "ginger" },
     { key: "gray", text: "Gray", value: "gray" },
     { key: "white", text: "White", value: "white" },
-    { key: "other", text: "Other", value: "other" },
   ];
 
   const [formState, setFormState] = 
@@ -36,7 +46,8 @@ const AddPetForm = () => {
     petDateLF: '', 
     petStatus: '', 
     petPhoto:'', 
-    petReward: ''
+    petReward: '',
+    petLastAddress: '',
   });
   const [validated] = useState(false);
 
@@ -48,17 +59,29 @@ const AddPetForm = () => {
   //   alert("need to be logged in to add a pet");
   //   return false;
   // }
-  // const placardAuthorData = Auth.getUser().data._id;
-  // setFormState({...formState, placardAuthor: placardAuthorData});
+  // 
 
 
   // Update form state on Input for addPlacard
   const handleChange = (event) => {
     const {name, value} = event.target;
-   
-      // event.preventDefault();
-      // event.stopPropagation();
+    // event.preventDefault();
+    // event.stopPropagation();
 
+    setFormState({ ...formState, [name]: value});
+  };
+
+  // Select handle
+  const handleDropdownChange = (e, result) => {
+    const { name, value } = result;
+    
+    setFormState({ ...formState, [name]: value});
+  };
+
+  // Datepicker handle
+  const datePickerHandleChange = date => {
+    const { name, value } = date.format();
+    
     setFormState({ ...formState, [name]: value});
   };
   
@@ -66,7 +89,8 @@ const AddPetForm = () => {
   // Submit Form function for addPlacard
   const handleFormSubmit = async (event) => {
     try {
-      alert("click on the submit button");
+      const placardAuthorData = Auth.getUser().data._id;
+      setFormState({...formState, placardAuthor: placardAuthorData});
       const {data} = await addPlacard({
         variables: { ...formState}
       });
@@ -87,88 +111,75 @@ const AddPetForm = () => {
       </GridColumn>
 
       <Grid.Column>
-        <Form>
-          <Form.Group inline >
-              <label>Status</label>
-              <Form.Radio
-                label="Lost"
-                name="petStatus"
-                value="lost"
-                onChange={handleChange}
-              />
-              <Form.Radio
-                label="Found"
-                name="petStatus"
-                value="found"
-                onChange={handleChange}
-              />
-            </Form.Group>
-
+        <Form  onSubmit={handleFormSubmit} >
+          {/* LOST OR FOUND */}
+          <Form.Select 
+               fluid label="Status" 
+               options={statusOpt} 
+               placeholder="Select" 
+               name="petStatus" 
+               onChange={handleDropdownChange}
+             />
+            {/* PET NAME */}
             <Form.Field>
               <Form.Input 
                 fluid label="Name" 
                 placeholder="Name" 
-                name="name" 
-                //onChange={handleChange}
+                name="petName" 
+                onChange={handleChange}
                 />
             </Form.Field>
-
+            {/* PET SPECIES */}
             <Form.Select 
                fluid label="Species" 
                options={SpeciesOptions} 
                placeholder="Select" 
                name="petSpecies" 
-               //onChange={handleChange}
+               onChange={handleDropdownChange}
              />
-
-          <Form.Group inline>
-            <label>Gender</label>
-            <Form.Radio
-              label="Male"
-              name="petGender"
-              value="male"
-              onChange={handleChange}
-            />
-                
-            <Form.Radio
-              label="Female"
-              name="petGender"
-              value="female"
-              onChange={handleChange}
-            />
-          </Form.Group>
-
+          {/* PET GENDER */}
           <Form.Select 
-               options={ColorOptions} 
-               placeholder="Species" 
-               name="petColor" 
-               onChange={handleChange}
+            fluid label="Gender" 
+            options={genderOptions} 
+            placeholder="Select" 
+            name="petGender" 
+            onChange={handleDropdownChange}
           />
 
+          {/* PET COLOR */}
+          <Form.Select 
+                label= "Color"
+               options={ColorOptions} 
+               placeholder="Color" 
+               name="petColor" 
+               onChange={handleDropdownChange}
+          />
+        {/* PET DESCRIPTION */}
           <Form.TextArea
             label="Description"
             name="petDesc"
             placeholder="Small description about the pet"
             onChange={handleChange}
           />
-
+        {/* PET LAST SEEN */}
         <Form.Field>
-          <label>Date last seen:</label>
+          <label>Date last seen</label>
           <Datepicker
           name="petDateLF"
-          onChange={handleChange} />
+          onChange={datePickerHandleChange} />
         </Form.Field>
-
-
+     {/* PET ADDRESS */}
           <Form.Field>
-            <Form.Input 
-            fluid label="Address where the pet was last seen" 
-            placeholder="Name" 
-            name="location" 
-            onChange={handleChange}
-            />
+            <Form.Field>
+              <label>Address where the pet was last seen</label>
+                <Autocomplete
+                apiKey={'AIzaSyAm_8uIOHe0Gr1lpNueCHZOcawTLEvWfno'}
+                name="location"
+                onChange={handleChange} 
+              />
+            </Form.Field>
           </Form.Field>
-
+          {/* PET REWARD */}
           <Form.Field>
             <Form.Input 
             fluid label="Reward (Optional)" 
@@ -177,8 +188,7 @@ const AddPetForm = () => {
             onChange={handleChange}/>
           </Form.Field>
 
-
-          <Button id="submitButton" onSubmit={handleFormSubmit} >Submit</Button>
+          <Button id="submitButton">Submit</Button>
         </Form>
       </Grid.Column>
     </Grid>

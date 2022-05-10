@@ -8,3 +8,6 @@ temp.js
 tempfile.js
 .eslintcache
 client/.eslintcache
+/.eslintcache/
+/.eslintcache
+.eslintcache/
