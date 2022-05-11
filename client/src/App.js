@@ -29,7 +29,7 @@ function App() {
               <Route path="/helpout" element={<Help />} />
               <Route path="/login" element={<SignupLogin />} />
               <Route path="/addpet" element={<AddPet />} />
-              <Route path="/pet" element={<IndividualPlacard />} />
+              <Route path="/pet/:placardId" element={<IndividualPlacard />} />
             </Routes>
           </div>
           <Footer />

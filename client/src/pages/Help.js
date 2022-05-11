@@ -14,7 +14,7 @@ import Checkout from "../components/Checkout";
 
 const Help = () => (
   <div>
-    <Container  style={{ marginTop: '8em' , "margin-bottom": '3rem' }} verticalAlign='middle'>
+    <Container  style={{ marginTop: '8em' , "marginBottom": '3rem' }} verticalAlign='middle'>
       <Segment   textallign="center"
               style={{ height: "75vh" }}>
       <Header as="h2" icon textAlign="center">

@@ -17,17 +17,18 @@ import CommentSection from '../components/CommentSection';
 import MapComponent from '../components/MapComponent';
 import EmailModal from '../components/EmailModal';
 //import Dog1 from "../assets/images/dog3.png";
-// import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const IndividualPlacard = () => {
   // Use `useParams()` to retrieve value of the route parameter `:placardId`
-  // const { placardId } = useParams(); 
-  const placardTag = "627480c86b16ba96bf70a6a0"
+  const placardTag = useParams().placardId; 
+  // const placardTag = "627b42348c51feabfe4afd0b"
+  console.log(placardTag);
   const { loading, data } = useQuery(SINGLE_PLACARD_QUERY, {
     variables: {placardId: placardTag},
   });
   const singlePlacard = data?.singlePlacard || {};
-
+  console.log('singlePlacard', singlePlacard);
 return loading ? (
   <h1> Loading </h1>
   ) : (

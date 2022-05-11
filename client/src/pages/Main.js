@@ -14,11 +14,11 @@ const Main = () => (
   <div>
     <Container style={{ marginTop: '6em' }}>
       <Grid>
-      {Auth.isLoggedIn ? <Grid.Row>
+      {Auth.loggedIn() ? (<Grid.Row>
            <Grid.Column floated='right' width={5}>
            <Link to="/addpet"><Button floated='right'>Add a Pet</Button></Link>
            </Grid.Column>
-        </Grid.Row> : <div></div>}
+        </Grid.Row>) : (<div></div>)}
         
 
         <Grid.Row>
