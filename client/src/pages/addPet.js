@@ -65,15 +65,6 @@ const AddPetForm = () => {
     
     setFormState({ ...formState, [name]: value});
   };
-
-  // Datepicker handle
-  const datePickerHandleChange = date => {
-    const { name, value } = date.format();
-    console.log(date);
-    setFormState({ ...formState, [name]: value});
-  };
-  
-  
   // Submit Form function for addPlacard
   const handleFormSubmit = async (event) => {
     try {
@@ -91,7 +82,7 @@ const AddPetForm = () => {
   };
  
   return (
-    <Container style={{ marginTop: '8em', "margin-bottom": '6rem' }} >
+    <Container style={{ marginTop: '8em', "marginBottom": '6rem' }} >
   <Segment >
     <Grid columns={2} relaxed="very">
       <GridColumn verticalAlign='middle'>
@@ -154,7 +145,7 @@ const AddPetForm = () => {
           <label>Date last seen</label>
           <Datepicker
           name="petDateLF"
-          onChange={(date) => datePickerHandleChange(date)} />
+          />
         </Form.Field>
      {/* PET ADDRESS */}
           <Form.Field>
