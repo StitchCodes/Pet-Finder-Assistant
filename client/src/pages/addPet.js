@@ -119,7 +119,7 @@ const AddPetForm = () => {
   };
 
   return (
-    <Container style={{ marginTop: "8em", "margin-bottom": "6rem" }}>
+    <Container style={{ marginTop: "8em", "marginBottom": "6rem" }}>
       <Segment>
         <Grid columns={2} relaxed="very">
           <GridColumn verticalAlign="middle">

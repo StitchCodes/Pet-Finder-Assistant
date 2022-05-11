@@ -13,14 +13,13 @@ import { useQuery } from '@apollo/client';
 const PetPlacard = () => {
   const { loading, data } = useQuery(ALL_PLACARDS_QUERY);
   const placardCards = data?.placards || [];
-  console.log(placardCards);
 return loading ? (
   <h1> Loading </h1>
   ) : (
     <div>
        <Card.Group>
         {placardCards.map((placard) => (
-            <Card fluid>
+            <Card fluid key={placard.placardPet._id}>
                 <Card.Content>
                   <Image floated='left' verticalalign='top' src={placard.placardPet.petPhoto} size='small' />
                   {placard.placardPet.petStatus === false ? (
@@ -35,7 +34,7 @@ return loading ? (
                   </Card.Description>
                 </Card.Content>
                 <Card.Content>
-                  <Link to={`/pet/${placard.placardPet._id}`}><button className="fluid ui button">View more details and comments</button></Link>
+                  <Link to={`/pet/${placard._id}`}><button className="fluid ui button">View more details and comments</button></Link>
                 </Card.Content>
             </Card>
         ))}
@@ -55,22 +54,7 @@ return loading ? (
                 <Link to="/pet"><button className="fluid ui button">View more details and comments</button></Link>
               </Card.Content>
           </Card>
-
-          <Card fluid>
-              <Card.Content>
-                <Image floated='left' verticalalign='top' src={Cat} size='small' />
-                <button className="right floated ui negative button"> Lost </button>
-                <Card.Header> Garfield </Card.Header>
-                <Card.Meta> Cancún, México</Card.Meta>
-                <Card.Description>
-                  Orange cat. Loves lasagna. Hates mondays.
-                </Card.Description>
-              </Card.Content>
-              <Card.Content>
-                <Link to="/helpout"><button className="fluid ui button">View more details and comments</button></Link>
-              </Card.Content>
-          </Card>
-      </Card.Group> 
+        </Card.Group> 
     </div>
   )
 };
