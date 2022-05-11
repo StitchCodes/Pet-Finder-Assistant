@@ -119,7 +119,7 @@ const AddPetForm = () => {
   };
 
   return (
-    <Container style={{ marginTop: "8em", "marginBottom": "6rem" }}>
+    <Container style={{ marginTop: "8em", marginBottom: "6rem" }}>
       <Segment>
         <Grid columns={2} relaxed="very">
           <GridColumn verticalAlign="middle">
@@ -216,7 +216,14 @@ const AddPetForm = () => {
                   uploadImage(e);
                 }}
               />
-              <img src={baseImage} height="200px" />
+              <img
+                label="Image Preview"
+                name="petImage"
+                src={baseImage}
+                height="200px"
+                onChange={handleChange}
+                alt="Here goes the Lost pet"
+              />
               <Button id="submitButton">Submit</Button>
             </Form>
           </Grid.Column>
