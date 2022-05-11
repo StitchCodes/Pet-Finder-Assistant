@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { LOGIN, NEWUSER } from '../utils/mutations';
-import { Button, Form, Grid, GridColumn, Header, Image, Segment, Container} from "semantic-ui-react";
+import { Button, Form, Grid, GridColumn, Header, Segment, Container} from "semantic-ui-react";
 
 import Auth from '../utils/auth';
 
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: '', password: ''});
   const [newFormState,setNewFormState] = useState({email:'', name:'', lastname:'', password: '', phone: ''});
-  const [login, {error, data}] = useMutation(LOGIN);
-  const [newUser, {error1, data1}] = useMutation(NEWUSER);
+  const [ login ] = useMutation(LOGIN);
+  const [ newUser] = useMutation(NEWUSER);
 
 
   // Update form state on Input for Login

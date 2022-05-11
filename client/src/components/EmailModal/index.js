@@ -11,7 +11,7 @@ function EmailModal() {
     <Modal
       closeIcon
       open={open}
-      trigger={<button class="fluid ui button">Contact Poster</button>}
+      trigger={<button className="fluid ui button">Contact Poster</button>}
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
     >

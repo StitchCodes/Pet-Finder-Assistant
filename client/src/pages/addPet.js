@@ -49,25 +49,13 @@ const AddPetForm = () => {
     petReward: '',
     petLastAddress: '',
   });
-  const [validated] = useState(false);
 
   const [ addPlacard ] = useMutation(ADDPLACARD);
-
-  // const token = Auth.loggedIn() ? Auth.getToken() : null;
-
-  // if (!token) {
-  //   alert("need to be logged in to add a pet");
-  //   return false;
-  // }
-  // 
-
 
   // Update form state on Input for addPlacard
   const handleChange = (event) => {
     const {name, value} = event.target;
-    // event.preventDefault();
-    // event.stopPropagation();
-
+    
     setFormState({ ...formState, [name]: value});
   };
 
@@ -81,7 +69,7 @@ const AddPetForm = () => {
   // Datepicker handle
   const datePickerHandleChange = date => {
     const { name, value } = date.format();
-    
+    console.log(date);
     setFormState({ ...formState, [name]: value});
   };
   
@@ -166,7 +154,7 @@ const AddPetForm = () => {
           <label>Date last seen</label>
           <Datepicker
           name="petDateLF"
-          onChange={datePickerHandleChange} />
+          onChange={(date) => datePickerHandleChange(date)} />
         </Form.Field>
      {/* PET ADDRESS */}
           <Form.Field>
