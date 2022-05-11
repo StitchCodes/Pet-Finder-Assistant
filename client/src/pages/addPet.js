@@ -71,8 +71,6 @@ const AddPetForm = () => {
 
     setFormState({ ...formState, [name]: value });
   };
-<<<<<<< HEAD
-=======
 
   // Datepicker handle
   const datePickerHandleChange = (date) => {
@@ -81,7 +79,6 @@ const AddPetForm = () => {
     setFormState({ ...formState, [name]: value });
   };
 
->>>>>>> 40df843f407b46141ee839df827df51988d90def
   // Submit Form function for addPlacard
   const handleFormSubmit = async (event) => {
     try {
@@ -122,7 +119,6 @@ const AddPetForm = () => {
   };
 
   return (
-<<<<<<< HEAD
     <Container style={{ marginTop: '8em', "marginBottom": '6rem' }} >
   <Segment >
     <Grid columns={2} relaxed="very">
@@ -196,53 +192,6 @@ const AddPetForm = () => {
                 apiKey={'AIzaSyAm_8uIOHe0Gr1lpNueCHZOcawTLEvWfno'}
                 name="location"
                 onChange={handleChange} 
-=======
-    <Container style={{ marginTop: "8em", "margin-bottom": "6rem" }}>
-      <Segment>
-        <Grid columns={2} relaxed="very">
-          <GridColumn verticalAlign="middle">
-            <Image src={PetBackground} />
-          </GridColumn>
-
-          <Grid.Column>
-            <Form onSubmit={handleFormSubmit}>
-              {/* LOST OR FOUND */}
-              <Form.Select
-                fluid
-                label="Status"
-                options={statusOpt}
-                placeholder="Select"
-                name="petStatus"
-                onChange={handleDropdownChange}
-              />
-              {/* PET NAME */}
-              <Form.Field>
-                <Form.Input
-                  fluid
-                  label="Name"
-                  placeholder="Name"
-                  name="petName"
-                  onChange={handleChange}
-                />
-              </Form.Field>
-              {/* PET SPECIES */}
-              <Form.Select
-                fluid
-                label="Species"
-                options={SpeciesOptions}
-                placeholder="Select"
-                name="petSpecies"
-                onChange={handleDropdownChange}
-              />
-              {/* PET GENDER */}
-              <Form.Select
-                fluid
-                label="Gender"
-                options={genderOptions}
-                placeholder="Select"
-                name="petGender"
-                onChange={handleDropdownChange}
->>>>>>> 40df843f407b46141ee839df827df51988d90def
               />
 
               {/* PET COLOR */}
