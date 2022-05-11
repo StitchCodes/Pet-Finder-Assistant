@@ -26,8 +26,8 @@ const IndividualPlacard = () => {
   const { loading, data } = useQuery(SINGLE_PLACARD_QUERY, {
     variables: {placardId: placardTag},
   });
-  console.log({data});
-  // 
+  const singlePlacard = data?.singlePlacard || {};
+
 return loading ? (
   <h1> Loading </h1>
   ) : (
@@ -51,35 +51,39 @@ return loading ? (
            
               <Grid.Column floated='left' width={12}>
                 <Card.Header> 
-                    <Header size='huge'> {/*{data.placardPet.petName}*/}
-                    <Header.Subheader> {/*{data?.location}*/} </Header.Subheader> 
+                    <Header size='huge'> {singlePlacard.placardPet.petName}
+                    <Header.Subheader> {singlePlacard.location} </Header.Subheader> 
                     </Header> 
                 </Card.Header>
                 
                 <Card.Description>
                     <Segment padded vertical>
-                    <strong> Species: </strong> {/*{data?.placardPet.petSpecies}*/}
+                    <strong> Species: </strong> {singlePlacard.placardPet.petSpecies}
                     </Segment>
                     <Segment padded vertical>
-                    <strong> Gender: </strong>  {/*{data?.placardPet.petGender}*/}
+                    <strong> Gender: </strong>  {singlePlacard.placardPet.petGender}
                     </Segment>
                     <Segment padded vertical>
-                    <strong> Description: </strong>  {/*{data?.placardPet.petColor}*/}. {/*{data?.placardPet.petDesc}*/}
+                    <strong> Description: </strong> {singlePlacard.placardPet.petColor} color, {singlePlacard.placardPet.petDesc}
                     </Segment>
                     <Segment padded vertical>
-                    <strong> Date I was last seen: </strong>  {/*{data?.placardPet.petDateLF}*/}
+                    <strong> Date I was last seen: </strong>  {singlePlacard.placardPet.petDateLF}
                     </Segment>
-                    <Segment padded vertical>
-                    <strong> Reward: </strong>  10,000 mxn
-                    </Segment>
+                    { singlePlacard.placardPet.petReward ? (<Segment padded vertical>
+                    <strong> Reward: </strong>  $ {singlePlacard.placardPet.petReward}
+                    </Segment>) : (<div> </div>)}
+                    
                 </Card.Description>
-
-
                </Grid.Column>
-
-                <Grid.Column floated='right' width={1}>
-                    <button className="right floated ui negative button"> {/*{data?.placardPet.petStatus}*/} </button>
+               {singlePlacard.placardPet.petStatus === true ? (
+               <Grid.Column floated='right' width={1}>
+                    <button className="right floated ui positive button"> Found </button>
                 </Grid.Column>
+                ) : (
+                <Grid.Column floated='right' width={1}>
+                    <button className="right floated ui negative button"> Lost </button>
+                </Grid.Column>
+                )}
               </Card.Content>
 
 
