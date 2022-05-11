@@ -119,79 +119,51 @@ const AddPetForm = () => {
   };
 
   return (
-    <Container style={{ marginTop: '8em', "marginBottom": '6rem' }} >
-  <Segment >
-    <Grid columns={2} relaxed="very">
-      <GridColumn verticalAlign='middle'>
-        <Image src={PetBackground} />
-      </GridColumn>
+    <Container style={{ marginTop: "8em", "margin-bottom": "6rem" }}>
+      <Segment>
+        <Grid columns={2} relaxed="very">
+          <GridColumn verticalAlign="middle">
+            <Image src={PetBackground} />
+          </GridColumn>
 
-      <Grid.Column>
-        <Form  onSubmit={handleFormSubmit} >
-          {/* LOST OR FOUND */}
-          <Form.Select 
-               fluid label="Status" 
-               options={statusOpt} 
-               placeholder="Select" 
-               name="petStatus" 
-               onChange={handleDropdownChange}
-             />
-            {/* PET NAME */}
-            <Form.Field>
-              <Form.Input 
-                fluid label="Name" 
-                placeholder="Name" 
-                name="petName" 
-                onChange={handleChange}
+          <Grid.Column>
+            <Form onSubmit={handleFormSubmit}>
+              {/* LOST OR FOUND */}
+              <Form.Select
+                fluid
+                label="Status"
+                options={statusOpt}
+                placeholder="Select"
+                name="petStatus"
+                onChange={handleDropdownChange}
+              />
+              {/* PET NAME */}
+              <Form.Field>
+                <Form.Input
+                  fluid
+                  label="Name"
+                  placeholder="Name"
+                  name="petName"
+                  onChange={handleChange}
                 />
-            </Form.Field>
-            {/* PET SPECIES */}
-            <Form.Select 
-               fluid label="Species" 
-               options={SpeciesOptions} 
-               placeholder="Select" 
-               name="petSpecies" 
-               onChange={handleDropdownChange}
-             />
-          {/* PET GENDER */}
-          <Form.Select 
-            fluid label="Gender" 
-            options={genderOptions} 
-            placeholder="Select" 
-            name="petGender" 
-            onChange={handleDropdownChange}
-          />
-
-          {/* PET COLOR */}
-          <Form.Select 
-                label= "Color"
-               options={ColorOptions} 
-               placeholder="Color" 
-               name="petColor" 
-               onChange={handleDropdownChange}
-          />
-        {/* PET DESCRIPTION */}
-          <Form.TextArea
-            label="Description"
-            name="petDesc"
-            placeholder="Small description about the pet"
-            onChange={handleChange}
-          />
-        {/* PET LAST SEEN */}
-        <Form.Field>
-          <label>Date last seen</label>
-          <Datepicker
-          name="petDateLF"
-          />
-        </Form.Field>
-     {/* PET ADDRESS */}
-          <Form.Field>
-            <Form.Field>
-              <label>Address where the pet was last seen</label>
-                <Autocomplete
-                apiKey={'AIzaSyAm_8uIOHe0Gr1lpNueCHZOcawTLEvWfno'}
-                name="location"
-                onChange={handleChange} 
+              </Form.Field>
+              {/* PET SPECIES */}
+              <Form.Select
+                fluid
+                label="Species"
+                options={SpeciesOptions}
+                placeholder="Select"
+                name="petSpecies"
+                onChange={handleDropdownChange}
+              />
+              {/* PET GENDER */}
+              <Form.Select
+                fluid
+                label="Gender"
+                options={genderOptions}
+                placeholder="Select"
+                name="petGender"
+                onChange={handleDropdownChange}
               />
 
               {/* PET COLOR */}
