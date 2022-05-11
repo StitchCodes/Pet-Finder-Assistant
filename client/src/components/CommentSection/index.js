@@ -52,7 +52,7 @@ const CommentSection = () => (
 
         <Form reply>
           <Form.TextArea />
-            <button class="ui teal button">Reply</button>
+            <button className="ui teal button">Reply</button>
         </Form>
       </Comment.Group>
     </Container>

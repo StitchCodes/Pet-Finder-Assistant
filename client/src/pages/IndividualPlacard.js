@@ -17,25 +17,20 @@ import CommentSection from '../components/CommentSection';
 import MapComponent from '../components/MapComponent';
 import EmailModal from '../components/EmailModal';
 //import Dog1 from "../assets/images/dog3.png";
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 
-function IndividualPlacard() {
+const IndividualPlacard = () => {
   // Use `useParams()` to retrieve value of the route parameter `:placardId`
   // const { placardId } = useParams(); 
-  let petName; 
-  const { placardId } = {placardId: "6276029ae62f7a036794c8ab"}
-  const { data } = useQuery(SINGLE_PLACARD_QUERY, {
-    variables: {placardId: placardId},
+  const placardTag = "627480c86b16ba96bf70a6a0"
+  const { loading, data } = useQuery(SINGLE_PLACARD_QUERY, {
+    variables: {placardId: placardTag},
   });
-  if (data) {
-    let petName = data.petName;
-  }
-  
-  console.log(petName);
-  console.log({placardId});
   console.log({data});
-
-return (
+  // 
+return loading ? (
+  <h1> Loading </h1>
+  ) : (
 <>
   <div>
     <Container style={{ marginTop: '6em' }}>
@@ -56,23 +51,23 @@ return (
            
               <Grid.Column floated='left' width={12}>
                 <Card.Header> 
-                    <Header size='huge'> {data.placardPet.petName}
-                    <Header.Subheader> {data.location} </Header.Subheader> 
+                    <Header size='huge'> {/*{data.placardPet.petName}*/}
+                    <Header.Subheader> {/*{data?.location}*/} </Header.Subheader> 
                     </Header> 
                 </Card.Header>
                 
                 <Card.Description>
                     <Segment padded vertical>
-                    <strong> Species: </strong> {data.placardPet.petSpecies}
+                    <strong> Species: </strong> {/*{data?.placardPet.petSpecies}*/}
                     </Segment>
                     <Segment padded vertical>
-                    <strong> Gender: </strong>  {data.placardPet.petGender}
+                    <strong> Gender: </strong>  {/*{data?.placardPet.petGender}*/}
                     </Segment>
                     <Segment padded vertical>
-                    <strong> Description: </strong>  {data.placardPet.petColor}. {data.placardPet.petDesc}
+                    <strong> Description: </strong>  {/*{data?.placardPet.petColor}*/}. {/*{data?.placardPet.petDesc}*/}
                     </Segment>
                     <Segment padded vertical>
-                    <strong> Date I was last seen: </strong>  {data.placardPet.petDateLF}
+                    <strong> Date I was last seen: </strong>  {/*{data?.placardPet.petDateLF}*/}
                     </Segment>
                     <Segment padded vertical>
                     <strong> Reward: </strong>  10,000 mxn
@@ -83,7 +78,7 @@ return (
                </Grid.Column>
 
                 <Grid.Column floated='right' width={1}>
-                    <button className="right floated ui negative button"> {data.placardPet.petStatus} </button>
+                    <button className="right floated ui negative button"> {/*{data?.placardPet.petStatus}*/} </button>
                 </Grid.Column>
               </Card.Content>
 
@@ -111,7 +106,8 @@ return (
       </Grid>
     </Container>
   </div>
-</>  
-)};
+</>);
+
+  }
 
 export default IndividualPlacard;
