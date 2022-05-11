@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Menu, Image } from 'semantic-ui-react'
+import { Button, Menu, Image, Label, Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 import Logo from "../../assets/images/logo.png";
 import Auth from '../../utils/auth';
@@ -16,24 +16,24 @@ class Header extends Component {
     
     function LoginBtn(props) {
       return (
-      <Menu.Menu position='right'>
+
       <Link to="/login">
         <Menu.Item>
           <Button primary>Log In</Button>
         </Menu.Item>
       </Link>
-    </Menu.Menu>);
+
+     );
     };
 
     function LogoutBtn(props) {
       return (
-        <Menu.Menu position='right'>
+        
         <Link to="/">
           <Menu.Item >
             <Button onClick={handleLogout} primary>Log Out!</Button>
           </Menu.Item>
         </Link>
-      </Menu.Menu>
       );
     };
 
@@ -43,10 +43,18 @@ class Header extends Component {
       const userNickname = Auth.getUser().data.nickname;
 
       if (userNickname) {
-          return <p>{userNickname}</p>
+          return (
+            <Label size='big' as='a' basic color='teal'>
+            <Icon name='user' />
+            Hello {userNickname}
+          </Label>)
         }
         else {
-          return <p>{userName} {userLastname}</p>
+          return (
+            <Label size='big' as='a' basic color='teal'>
+            <Icon name='user' />
+            {userName} {userLastname}
+          </Label>)
         }
     };
 
@@ -55,12 +63,22 @@ class Header extends Component {
       if (Auth.loggedIn()) {
         return (
         <div>
-          <UsernameToken />
-          <LogoutBtn />
+          <Menu.Menu position='right'>
+              <Menu.Item>
+                <UsernameToken />
+              </Menu.Item>
+                <LogoutBtn />
+          </Menu.Menu>
+      
         </div>
         )
       }
-      return <LoginBtn />
+      return (
+        <Menu.Menu  position='right'>
+        
+             <LoginBtn />
+       
+        </Menu.Menu>)
     };
 
     function handleLogout(params) {
@@ -93,8 +111,11 @@ class Header extends Component {
             onClick={this.handleItemClick}
           />
         </Link>
+
         {/* LOGIN/LOGOUT BUTTON */}
-        <LogStatus />        
+        <Menu.Menu position='right'>
+          <LogStatus />    
+        </Menu.Menu>    
       </Menu>
     )
   }
