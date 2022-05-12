@@ -13,8 +13,9 @@ import {
 } from "semantic-ui-react";
 import PetBackground from "../assets/images/pets.png";
 import Auth from "../utils/auth";
-import Datepicker from "../components/DatePicker";
+import DatePicker from "react-datepicker";
 import Autocomplete from "react-google-autocomplete";
+import "react-datepicker/dist/react-datepicker.css";
 
 const AddPetForm = () => {
   const SpeciesOptions = [
@@ -72,11 +73,20 @@ const AddPetForm = () => {
     setFormState({ ...formState, [name]: value });
   };
 
-  // Datepicker handle
+  // Datepicker handler
+  const [setDate, setSetDate] = useState(new Date());
   const datePickerHandleChange = (date) => {
-    const { name, value } = date.format();
-    console.log(date);
-    setFormState({ ...formState, [name]: value });
+    const dateString = new Date(date).toLocaleDateString();
+    console.log(dateString);
+    setSetDate(date);
+    setFormState({ ...formState, petDateLF: date });
+  };
+
+  //Autocomplete handler
+  const autocompleteHandleChange = async (place) => {
+    console.log(place.place_id);
+    const placeId = place.place_id;
+    setFormState({ ...formState, location: placeId });
   };
 
   // Submit Form function for addPlacard
@@ -134,6 +144,20 @@ const AddPetForm = () => {
 
           <Grid.Column>
             <Form onSubmit={handleFormSubmit}>
+              {/* PET ADDRESS */}
+              <Form.Field>
+                <Form.Field>
+                  <label>Address where the pet was last seen</label>
+                  <Autocomplete
+                    apiKey={"AIzaSyAm_8uIOHe0Gr1lpNueCHZOcawTLEvWfno"}
+                    name="location"
+                    onPlaceSelected={autocompleteHandleChange}
+                    options={{
+                      componentRestrictions: { country: "mx" },
+                    }}
+                  />
+                </Form.Field>
+              </Form.Field>
               {/* LOST OR FOUND */}
               <Form.Select
                 fluid
@@ -190,21 +214,12 @@ const AddPetForm = () => {
               {/* PET LAST SEEN */}
               <Form.Field>
                 <label>Date last seen</label>
-                <Datepicker
-                  name="petDateLF"
-                  onChange={(date) => datePickerHandleChange(date)}
-                />
-              </Form.Field>
-              {/* PET ADDRESS */}
-              <Form.Field>
-                <Form.Field>
-                  <label>Address where the pet was last seen</label>
-                  <Autocomplete
-                    apiKey={"AIzaSyAm_8uIOHe0Gr1lpNueCHZOcawTLEvWfno"}
-                    name="location"
-                    onChange={handleChange}
+                <DatePicker
+                   name="petDateLF"
+                   dateFormat="dd/MM/yyyy"
+                   onChange= {datePickerHandleChange}
+                   selected={setDate}
                   />
-                </Form.Field>
               </Form.Field>
               {/* PET REWARD */}
               <Form.Field>
@@ -228,7 +243,7 @@ const AddPetForm = () => {
                 src={baseImage}
                 height="200px"
                 onChange={handleChange}
-                alt="Here goes the Lost pet"
+                alt=""
               />
               <Button id="submitButton">Submit</Button>
             </Form>

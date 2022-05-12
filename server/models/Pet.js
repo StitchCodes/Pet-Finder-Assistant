@@ -1,4 +1,5 @@
 const { Schema, model } = require("mongoose");
+const dateFormat = require('../utils/dateFormat');
 
 const petSchema = Schema({
   petName: {
@@ -25,6 +26,7 @@ const petSchema = Schema({
   petDateLF: {
     type: Date,
     required: true,
+    get: (timestamp) => dateFormat(timestamp),
   },
   petStatus: {
     type: Boolean,
