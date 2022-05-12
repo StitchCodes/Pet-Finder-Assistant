@@ -22,7 +22,7 @@ type Pet {
     petGender: String
     petColor: String
     petDesc: String
-    petDateLF: String
+    petDateLf: String
     petStatus: String
     petPhoto: String
     petReward: Int
@@ -55,8 +55,7 @@ type Query {
 type Mutation {
     addUser(email: String!, nickname: String, name:String!, lastname:String!, phone: String, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addPlacard(location: String, petName: String, petSpecies: String, petGender: String, petColor: String, petDesc: String, petDateLF: String, petStatus: Boolean, petPhoto: String, petReward: Int): Placard
-    # addPlacard(location: String, petName: String): Placard
+    addPlacard(location: String!, petName: String!, petSpecies: String!, petGender: String!, petColor: String!, petDesc: String!, petDateLf: String!, petStatus: Boolean!, petPhoto: String, petReward: Int): Placard
     addComment(Placard: ID, commentText: String!, commentAuthor: String!, commentCreatedAt: String!): Placard
 }
 `;

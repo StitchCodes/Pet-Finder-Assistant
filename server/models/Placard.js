@@ -40,7 +40,7 @@ const placardSchema = new Schema({
             type: String,
             required: false,
           },
-          petDateLF: {
+          petDateLf: {
             type: Date,
             required: false,
             get: (timestamp) => dateFormat(timestamp),

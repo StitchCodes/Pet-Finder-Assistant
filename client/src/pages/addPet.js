@@ -12,10 +12,10 @@ import {
   Divider,
 } from "semantic-ui-react";
 import PetBackground from "../assets/images/pets.png";
-import Auth from "../utils/auth";
 import DatePicker from "react-datepicker";
 import Autocomplete from "react-google-autocomplete";
 import "react-datepicker/dist/react-datepicker.css";
+
 
 const AddPetForm = () => {
   const SpeciesOptions = [
@@ -24,8 +24,8 @@ const AddPetForm = () => {
   ];
 
   const statusOpt = [
-    { key: "L", text: "Lost", value: "lost" },
-    { key: "F", text: "Found", value: "found" },
+    { key: "L", text: "Lost", value: false },
+    { key: "F", text: "Found", value: true },
   ];
 
   const genderOptions = [
@@ -43,18 +43,16 @@ const AddPetForm = () => {
   ];
 
   const [formState, setFormState] = useState({
-    petAuthor: "",
     location: "",
     petName: "",
     petSpecies: "",
     petGender: "",
     petColor: "",
     petDesc: "",
-    petDateLF: "",
+    petDateLf: "",
     petStatus: "",
     petPhoto: "",
-    petReward: "",
-    petLastAddress: "",
+    petReward: 0,
   });
 
   const [addPlacard] = useMutation(ADDPLACARD);
@@ -79,7 +77,7 @@ const AddPetForm = () => {
     const dateString = new Date(date).toLocaleDateString();
     console.log(dateString);
     setSetDate(date);
-    setFormState({ ...formState, petDateLF: date });
+    setFormState({ ...formState, petDateLf: date });
   };
 
   //Autocomplete handler
@@ -92,19 +90,23 @@ const AddPetForm = () => {
   // Submit Form function for addPlacard
   const handleFormSubmit = async (event) => {
     try {
-      const placardAuthorData = Auth.getUser()._id;
-      setFormState({ ...formState, placardAuthor: placardAuthorData });
+      
+      setFormState({ ...formState });
       const { data } = await addPlacard({
         variables: { ...formState },
       });
+      
       if (!data) {
         throw new Error("something went wrong!");
       }
       console.log("FORM SUBMIT", formState);
+      alert("Pet has been added to our Database!")
     } catch (e) {
       console.error(e);
     }
   };
+
+
   // Uplad Photo
   const [baseImage, setBaseImage] = useState("");
 
@@ -215,7 +217,7 @@ const AddPetForm = () => {
               <Form.Field>
                 <label>Date last seen</label>
                 <DatePicker
-                   name="petDateLF"
+                   name="petDateLf"
                    dateFormat="dd/MM/yyyy"
                    onChange= {datePickerHandleChange}
                    selected={setDate}

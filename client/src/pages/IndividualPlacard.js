@@ -66,7 +66,7 @@ return loading ? (
                     <strong> Description: </strong> {singlePlacard.placardPet.petColor} color, {singlePlacard.placardPet.petDesc}
                     </Segment>
                     <Segment padded vertical>
-                    <strong> Date I was last seen: </strong>  {singlePlacard.placardPet.petDateLF}
+                    <strong> Date I was last seen: </strong>  {singlePlacard.placardPet.petDateLf}
                     </Segment>
                     { singlePlacard.placardPet.petReward ? (<Segment padded vertical>
                     <strong> Reward: </strong>  $ {singlePlacard.placardPet.petReward}

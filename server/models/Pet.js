@@ -23,7 +23,7 @@
 //     type: String,
 //     required: true,
 //   },
-//   petDateLF: {
+//   petDateLf: {
 //     type: Date,
 //     required: true,
 //     get: (timestamp) => dateFormat(timestamp),
