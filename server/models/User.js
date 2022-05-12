@@ -30,8 +30,6 @@ const userSchema = new Schema({
     required: false,
     unique: false,
     match: [/[0-9]/, "Only numbers!"],
-    minlength: 8,
-    maxlength: 10,
   },
   password: {
     type: String,

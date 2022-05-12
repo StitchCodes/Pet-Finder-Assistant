@@ -51,7 +51,7 @@ export const ADDPLACARD = gql`
       createdAt: $createdAt
       location: $location
       petName: $petName
-      petSpecies: $petName
+      petSpecies: $$petSpecies
       petGender: $petGender
       petColor: $petColor
       petDesc: $petDesc
