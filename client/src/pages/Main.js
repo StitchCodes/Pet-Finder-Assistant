@@ -10,7 +10,7 @@ import Auth from '../utils/auth';
 import FilterForm from '../components/FilterForm';
 import PetPlacard from '../components/PetPlacard';
 
-const Main = () => (
+const Main = ()=> (
   <div>
     <Container style={{ marginTop: '6em' }}>
       <Grid>
@@ -22,11 +22,13 @@ const Main = () => (
         
 
         <Grid.Row>
-          <Grid.Column floated='left' width={3}>
-            <FilterForm/>
-          </Grid.Column>
+          <Grid.Column fluid>
+        <FilterForm/>
+        </Grid.Column>
+          </Grid.Row>
 
-          <Grid.Column floated='right' width={13}>
+        <Grid.Row>
+          <Grid.Column  fluid>
               <PetPlacard/>
           </Grid.Column>
         </Grid.Row>

@@ -8,13 +8,15 @@ This is a React app that helps users post information of lost and found pets and
 
 ### How to use
 
+The user can enter to the website and see a feed of pets. There the user can see pets that have been lost and have been found. Then the user can Sign Up to the page and Log In, and once they're logged in they can acces the Add a Pet form, where they can add a new Pet Placard.
 
 
 ### Website Appearance 
 
-![Website screenshot](./client/public/webpage.png)
+![Website screenshot](./client/src/assets/images/webpage.png)
 
-### [Published Site]()
+### [Published Site](https://paw-troller.herokuapp.com/ 
+)
 
 ### Technologies
 
