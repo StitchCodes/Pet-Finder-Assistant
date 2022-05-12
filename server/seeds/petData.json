@@ -5,7 +5,7 @@
       "petGender": "Male",
       "petColor": "Gray",
       "petDesc": "White spot on the left side",
-      "petDateLF": "05/04/2022",
+      "petDateLf": "05/04/2022",
       "petStatus": 1,
       "petPhoto":"https://placedog.net/500/280",
       "petReward": 5000
@@ -17,7 +17,7 @@
       "petGender": "Male",
       "petColor": "Gray",
       "petDesc": "Black spot on the back",
-      "petDateLF": "05/02/2022",
+      "petDateLf": "05/02/2022",
       "petStatus": 1,
       "petPhoto":"https://placedog.net/500/300",
       "petReward": 5000

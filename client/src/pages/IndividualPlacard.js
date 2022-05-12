@@ -22,13 +22,11 @@ import { useParams } from 'react-router-dom';
 const IndividualPlacard = () => {
   // Use `useParams()` to retrieve value of the route parameter `:placardId`
   const placardTag = useParams().placardId; 
-  // const placardTag = "627b42348c51feabfe4afd0b"
-  console.log(placardTag);
   const { loading, data } = useQuery(SINGLE_PLACARD_QUERY, {
     variables: {placardId: placardTag},
   });
   const singlePlacard = data?.singlePlacard || {};
-  console.log('singlePlacard', singlePlacard);
+
 return loading ? (
   <h1> Loading </h1>
   ) : (
@@ -68,7 +66,7 @@ return loading ? (
                     <strong> Description: </strong> {singlePlacard.placardPet.petColor} color, {singlePlacard.placardPet.petDesc}
                     </Segment>
                     <Segment padded vertical>
-                    <strong> Date I was last seen: </strong>  {singlePlacard.placardPet.petDateLF}
+                    <strong> Date I was last seen: </strong>  {singlePlacard.placardPet.petDateLf}
                     </Segment>
                     { singlePlacard.placardPet.petReward ? (<Segment padded vertical>
                     <strong> Reward: </strong>  $ {singlePlacard.placardPet.petReward}

@@ -9,13 +9,12 @@ export const ALL_PLACARDS_QUERY = gql`
             createdAt
             location
             placardPet {
-            _id
             petName
             petSpecies
             petGender
             petColor
             petDesc
-            petDateLF
+            petDateLf
             petStatus
             petPhoto
             petReward
@@ -51,7 +50,7 @@ export const SINGLE_PLACARD_QUERY = gql `
             petGender
             petColor
             petDesc
-            petDateLF
+            petDateLf
             petStatus
             petPhoto
             petReward

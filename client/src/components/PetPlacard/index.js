@@ -8,6 +8,7 @@ import { useQuery } from "@apollo/client";
 
 const PetPlacard = () => {
   const { loading, data } = useQuery(ALL_PLACARDS_QUERY);
+
   const placardCards = data?.placards || [];
   return loading ? (
     <h1> Loading </h1>
@@ -15,23 +16,24 @@ const PetPlacard = () => {
     <div>
       <Card.Group>
         {placardCards.map((placard) => (
-          <Card fluid key={placard.placardPet._id}>
+          <Card fluid key={placard._id}>
             <Card.Content>
               <Image
                 floated="left"
                 verticalalign="top"
-                src={placard.placardPet.petPhoto}
+                src={{uri: placard.placardPet.petPhoto}}
                 size="small"
               />
-              {placard.placardPet.petStatus === false ? (
+
+              {placard.placardPet.petStatus ? (
                 <button className="right floated ui negative button">
                   {" "}
-                  Lost on {placard.placardPet.petDateLF}{" "}
+                  Lost on {placard.placardPet.petDateLf}{" "}
                 </button>
               ) : (
                 <button className="right floated ui positive button">
                   {" "}
-                  Found on {placard.placardPet.petDateLF}{" "}
+                  Found on {placard.placardPet.petDateLf}{" "}
                 </button>
               )}
               <Card.Header> {placard.placardPet.petName} </Card.Header>

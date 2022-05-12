@@ -16,6 +16,11 @@ const server = new ApolloServer({
   context: authMiddleware,
 });
 
+// CONNECTION
+// app.use(express.urlencoded({ extended: false }));
+// app.use(express.json());
+
+// TO UPLOAD THE PHOTO
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(
   bodyParser.urlencoded({

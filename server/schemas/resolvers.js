@@ -6,11 +6,11 @@ const resolvers = {
     Query: {
         // Query all placards
         placards: async (parent) => {
-            return Placard.find({}).populate('placardPet').sort({ createdAt: -1 });
+            return Placard.find({}).sort({ createdAt: -1 });
         },
         // Query single placard
         singlePlacard: async (parent, { placardId }) => {
-            return Placard.findOne({ _id: placardId }).populate('placardPet');
+            return Placard.findOne({ _id: placardId });
         },
         // Query User for login
         user: async (parent, { email, password }) => {
@@ -48,33 +48,16 @@ const resolvers = {
             const token = signToken(user);
             return {token}
         },
-        
-        // Create new placard
-        addPlacard: async(parent, { placardAuthor, createdAt, location, petName, petSpecies, petGender, petColor, petDesc, petDateLF, petStatus, petPhoto, petReward }, context) => {
-            {
-                const placard = await Placard.create({
-                    placardAuthor,
-                    createdAt,
-                    location,
-                    petName,
-                    petSpecies,
-                    petGender,
-                    petColor,
-                    petDesc,
-                    petDateLF,
-                    petStatus,
-                    petPhoto,
-                    petReward                    
-                });
 
-                // await User.findOneAndUpdate(
-                //     { _id: context.user._id },
-                //     { $addToSet: { placards: placard._id }}
-                // );
+        addPlacard: async (parent, {location, petName, petSpecies, petGender, petColor, petDesc, petDateLf, petStatus, petPhoto, petReward}, context) => {
 
-                return placard;
-            }
-            throw new AuthenticationError('Please login to add a new placard!');
+            const placard = await Placard.create({
+                location,
+                placardPet: { petName, petSpecies, petGender, petColor, petDesc, petDateLf, petStatus, petPhoto, petReward }
+                
+            });
+            
+            return placard;
         },
         // Create comment to placard
         addComment: async (parent, { placardId, commentText, commentAuthor, commentCreatedAt}, context) => {
