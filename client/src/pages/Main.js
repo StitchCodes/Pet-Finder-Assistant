@@ -18,7 +18,7 @@ const Main = ()=> (
            <Grid.Column floated='right' width={5}>
            <Link to="/addpet"><Button floated='right'>Add a Pet</Button></Link>
            </Grid.Column>
-        </Grid.Row>) : (<div></div>)}
+        </Grid.Row>) : (<p>Log in or create an account to create a post!</p>)}
         
 
         <Grid.Row>
