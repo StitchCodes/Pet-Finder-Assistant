@@ -228,7 +228,7 @@ const AddPetForm = () => {
                 src={baseImage}
                 height="200px"
                 onChange={handleChange}
-                alt="Here goes the Lost pet"
+                alt=""
               />
               <Button id="submitButton">Submit</Button>
             </Form>
