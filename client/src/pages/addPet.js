@@ -90,6 +90,7 @@ const AddPetForm = () => {
       if (!data) {
         throw new Error("something went wrong!");
       }
+      console.log("form subrmit", formState);
     } catch (e) {
       console.error(e);
     }
@@ -100,6 +101,7 @@ const AddPetForm = () => {
   const uploadImage = async (e) => {
     const file = e.target.files[0];
     const base64 = await convertBase64(file);
+
     setBaseImage(base64);
   };
 
@@ -107,9 +109,13 @@ const AddPetForm = () => {
     return new Promise((resolve, reject) => {
       const fileReader = new FileReader();
       fileReader.readAsDataURL(file);
-
+      console.log("coinver base", fileReader);
       fileReader.onload = () => {
         resolve(fileReader.result);
+
+        const name = "petPhoto";
+        setFormState({ ...formState, [name]: fileReader.result });
+        console.log("On Load:", formState);
       };
 
       fileReader.onerror = (error) => {
@@ -119,7 +125,7 @@ const AddPetForm = () => {
   };
 
   return (
-    <Container style={{ marginTop: "8em", "marginBottom": "6rem" }}>
+    <Container style={{ marginTop: "8em", marginBottom: "6rem" }}>
       <Segment>
         <Grid columns={2} relaxed="very">
           <GridColumn verticalAlign="middle">
@@ -216,7 +222,14 @@ const AddPetForm = () => {
                   uploadImage(e);
                 }}
               />
-              <img src={baseImage} height="200px" />
+              <img
+                label="Image Preview"
+                name="petPhoto"
+                src={baseImage}
+                height="200px"
+                onChange={handleChange}
+                alt="Here goes the Lost pet"
+              />
               <Button id="submitButton">Submit</Button>
             </Form>
           </Grid.Column>
