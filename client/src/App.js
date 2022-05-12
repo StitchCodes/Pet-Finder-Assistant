@@ -32,8 +32,8 @@ function App() {
               <Route path="/login" element={<SignupLogin />} />
               <Route path="/addpet" element={<AddPet />} />
               <Route path="/pet/:placardId" element={<IndividualPlacard />} />
-              <Route path="success" element={<Success />} />
-              <Route path="cancel" element={<Cancel />} />
+              <Route path="/success" element={<Success />} />
+              <Route path="/cancel" element={<Cancel />} />
             </Routes>
           </div>
           <Footer />

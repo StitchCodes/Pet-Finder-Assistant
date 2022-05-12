@@ -51,9 +51,9 @@ const resolvers = {
         
         // Create new placard
         addPlacard: async(parent, { placardAuthor, createdAt, location, petName, petSpecies, petGender, petColor, petDesc, petDateLF, petStatus, petPhoto, petReward }, context) => {
-            if(context.user) {
+            {
                 const placard = await Placard.create({
-                    placardAuthor: context.user.placardAuthor._id,
+                    placardAuthor,
                     createdAt,
                     location,
                     petName,
@@ -67,10 +67,10 @@ const resolvers = {
                     petReward                    
                 });
 
-                await User.findOneAndUpdate(
-                    { _id: placardAuthor._id },
-                    { $addToSet: { placards: placard._id }}
-                );
+                // await User.findOneAndUpdate(
+                //     { _id: context.user._id },
+                //     { $addToSet: { placards: placard._id }}
+                // );
 
                 return placard;
             }
