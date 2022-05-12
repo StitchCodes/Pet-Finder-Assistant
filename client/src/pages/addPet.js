@@ -82,8 +82,8 @@ const AddPetForm = () => {
 
   //Autocomplete handler
   const autocompleteHandleChange = async (place) => {
-    console.log(place.place_id);
-    const placeId = place.place_id;
+    console.log(place.formatted_address);
+    const placeId = place.formatted_address;
     setFormState({ ...formState, location: placeId });
   };
 
