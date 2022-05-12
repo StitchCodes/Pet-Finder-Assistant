@@ -10,6 +10,7 @@ const PetPlacard = () => {
   const { loading, data } = useQuery(ALL_PLACARDS_QUERY);
 
   const placardCards = data?.placards || [];
+  
   return loading ? (
     <h1> Loading </h1>
   ) : (
@@ -21,10 +22,13 @@ const PetPlacard = () => {
               <Image
                 floated="left"
                 verticalalign="top"
-                src={{uri: placard.placardPet.petPhoto}}
+                width='500'
+                height='200'
+                src={placard.placardPet.petPhoto}
                 size="small"
+                alt="Pet Image"
               />
-
+              
               {placard.placardPet.petStatus ? (
                 <button className="right floated ui negative button">
                   {" "}
