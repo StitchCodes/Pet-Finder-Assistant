@@ -56,7 +56,7 @@ type Query {
 type Mutation {
     addUser(email: String!, nickname: String, name:String!, lastname:String!, phone: String, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addPlacard(placardAuthor: String!, createdAt: String!, location: String!, petName: String!, petSpecies: String!, petGender: String!, petColor: String!, petDesc: String!, petDateLF: String!, petStatus: Boolean!, petPhoto: String!, petReward: Int!): Placard
+    addPlacard(placardAuthor: String, createdAt: String, location: String, petName: String, petSpecies: String, petGender: String, petColor: String, petDesc: String, petDateLF: String, petStatus: Boolean, petPhoto: String, petReward: Int): Placard
     addComment(Placard: ID, commentText: String!, commentAuthor: String!, commentCreatedAt: String!): Placard
 }
 `;

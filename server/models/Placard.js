@@ -5,9 +5,8 @@ const dateFormat = require('../utils/dateFormat');
 // Placard Model Definition
 const placardSchema = new Schema({
     placardAuthor: {
-        type: String,
-        required: false,
-        trim: true,
+        type: Schema.Types.ObjectId,
+        ref: "User",
     },
     createdAt: {
         type: Date,
