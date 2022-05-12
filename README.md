@@ -45,3 +45,9 @@ Team members:
 ### Roadmap
 
 This website allows for many different features to be implemented in the future. One feature we wish to include in future releases is utilizing the payment platform we are already using for donations and set up an online store where you can directly buy food, toys, pay for veterinary fees of found/stray dogs. That way the user can see directly what their money will be utilized in. We also want to set up a direct message in-app, so that the user doesn't have to contact other users directly through email and can stay in the page for direct communication.
+
+### External Resources Consulted
+[Stripe Checkout with React Crash Course](https://www.youtube.com/watch?v=BSN2KcB_h-M&t=778s)
+[Stripe Checkout Client Only](https://codesandbox.io/s/stripe-checkout-client-only-zbqh5)
+[How To Convert File To Base64 Format React Hook Component ](https://www.youtube.com/watch?v=qmr9NCYjueM)
+[Image to Base64](https://github.com/Rinlama/react-howtoseries/blob/imagetobase64Tut/src/App.js)
