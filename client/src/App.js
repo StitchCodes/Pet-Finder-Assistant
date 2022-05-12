@@ -9,6 +9,8 @@ import Main from "./pages/Main";
 import Help from "./pages/Help";
 import SignupLogin from "./pages/SignupLogin";
 import AddPet from "./pages/addPet";
+import Success from "./components/Success";
+import Cancel from "./components/Cancel";
 
 import IndividualPlacard from "./pages/IndividualPlacard";
 
@@ -30,6 +32,8 @@ function App() {
               <Route path="/login" element={<SignupLogin />} />
               <Route path="/addpet" element={<AddPet />} />
               <Route path="/pet/:placardId" element={<IndividualPlacard />} />
+              <Route path="success" element={<Success />} />
+              <Route path="cancel" element={<Cancel />} />
             </Routes>
           </div>
           <Footer />

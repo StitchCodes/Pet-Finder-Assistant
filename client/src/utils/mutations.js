@@ -45,7 +45,6 @@ export const ADDPLACARD = gql`
     $petStatus: String
     $petPhoto: String
     $petReward: String
-    $petImage: String
   ) {
     addPlacard(
       placardAuthor: $placardAuthor

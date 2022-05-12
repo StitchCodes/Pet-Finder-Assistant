@@ -38,10 +38,6 @@ const petSchema = Schema({
     type: Number,
     required: false,
   },
-  petImage: {
-    type: String,
-    required: true,
-  },
   placard: {
     type: Schema.Types.ObjectId,
     ref: "Placard",
