@@ -5,8 +5,9 @@ const dateFormat = require('../utils/dateFormat');
 // Placard Model Definition
 const placardSchema = new Schema({
     placardAuthor: {
-        type: Schema.Types.ObjectId,
-        ref: "User",
+        type: String,
+        required: false,
+        trim: true,
     },
     createdAt: {
         type: Date,
@@ -15,11 +16,47 @@ const placardSchema = new Schema({
     },
     location: {
         type: String,
-        required: true,
+        required: false,
     },
     placardPet: {
-        type: Schema.Types.ObjectId,
-        ref: 'Pet'
+        petName: {
+            type: String,
+            required: true,
+            trim: true,
+          },
+          petSpecies: {
+            type: String,
+            required: false,
+          },
+          petGender: {
+            type: String,
+            required: false,
+          },
+          petColor: {
+            type: String,
+            required: false,
+          },
+          petDesc: {
+            type: String,
+            required: false,
+          },
+          petDateLF: {
+            type: Date,
+            required: false,
+            get: (timestamp) => dateFormat(timestamp),
+          },
+          petStatus: {
+            type: Boolean,
+            required: false,
+          },
+          petPhoto: {
+            type: String,
+            required: false,
+          },
+          petReward: {
+            type: Number,
+            required: false,
+          }
     },
     comments:[
         {

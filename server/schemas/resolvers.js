@@ -48,33 +48,18 @@ const resolvers = {
             const token = signToken(user);
             return {token}
         },
-        
-        // Create new placard
-        addPlacard: async(parent, { placardAuthor, createdAt, location, petName, petSpecies, petGender, petColor, petDesc, petDateLF, petStatus, petPhoto, petReward }, context) => {
-            {
-                const placard = await Placard.create({
-                    placardAuthor,
-                    createdAt,
-                    location,
-                    petName,
-                    petSpecies,
-                    petGender,
-                    petColor,
-                    petDesc,
-                    petDateLF,
-                    petStatus,
-                    petPhoto,
-                    petReward                    
-                });
 
-                // await User.findOneAndUpdate(
-                //     { _id: context.user._id },
-                //     { $addToSet: { placards: placard._id }}
-                // );
-
-                return placard;
-            }
-            throw new AuthenticationError('Please login to add a new placard!');
+        addPlacard: async (parent, {location, petName, petSpecies, petGender, petColor, petDesc, petDateLF, petStatus, petPhoto, petReward}, context) => {
+            console.log("Context:", context);
+            console.log("Context Email:", context.email);
+            const placard = await Placard.create({
+                location,
+                placardPet: { petName, petSpecies, petGender, petColor, petDesc, petDateLF, petStatus, petPhoto, petReward }
+                
+            });
+            
+            console.log(placard);
+            return placard;
         },
         // Create comment to placard
         addComment: async (parent, { placardId, commentText, commentAuthor, commentCreatedAt}, context) => {
