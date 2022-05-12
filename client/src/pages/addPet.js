@@ -73,13 +73,20 @@ const AddPetForm = () => {
     setFormState({ ...formState, [name]: value });
   };
 
-  // Datepicker handle
+  // Datepicker handler
   const [setDate, setSetDate] = useState(new Date());
   const datePickerHandleChange = (date) => {
     const dateString = new Date(date).toLocaleDateString();
     console.log(dateString);
     setSetDate(date);
     setFormState({ ...formState, petDateLF: date });
+  };
+
+  //Autocomplete handler
+  const autocompleteHandleChange = async (place) => {
+    console.log(place.place_id);
+    const placeId = place.place_id;
+    setFormState({ ...formState, location: placeId });
   };
 
   // Submit Form function for addPlacard
@@ -137,6 +144,20 @@ const AddPetForm = () => {
 
           <Grid.Column>
             <Form onSubmit={handleFormSubmit}>
+              {/* PET ADDRESS */}
+              <Form.Field>
+                <Form.Field>
+                  <label>Address where the pet was last seen</label>
+                  <Autocomplete
+                    apiKey={"AIzaSyAm_8uIOHe0Gr1lpNueCHZOcawTLEvWfno"}
+                    name="location"
+                    onPlaceSelected={autocompleteHandleChange}
+                    options={{
+                      componentRestrictions: { country: "mx" },
+                    }}
+                  />
+                </Form.Field>
+              </Form.Field>
               {/* LOST OR FOUND */}
               <Form.Select
                 fluid
@@ -199,17 +220,6 @@ const AddPetForm = () => {
                    onChange= {datePickerHandleChange}
                    selected={setDate}
                   />
-              </Form.Field>
-              {/* PET ADDRESS */}
-              <Form.Field>
-                <Form.Field>
-                  <label>Address where the pet was last seen</label>
-                  <Autocomplete
-                    apiKey={"AIzaSyAm_8uIOHe0Gr1lpNueCHZOcawTLEvWfno"}
-                    name="location"
-                    onChange={handleChange}
-                  />
-                </Form.Field>
               </Form.Field>
               {/* PET REWARD */}
               <Form.Field>
