@@ -50,15 +50,13 @@ const resolvers = {
         },
 
         addPlacard: async (parent, {location, petName, petSpecies, petGender, petColor, petDesc, petDateLF, petStatus, petPhoto, petReward}, context) => {
-            console.log("Context:", context);
-            console.log("Context Email:", context.email);
+
             const placard = await Placard.create({
                 location,
                 placardPet: { petName, petSpecies, petGender, petColor, petDesc, petDateLF, petStatus, petPhoto, petReward }
                 
             });
             
-            console.log(placard);
             return placard;
         },
         // Create comment to placard

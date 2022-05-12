@@ -45,7 +45,6 @@ const Login = (props) => {
     
     try {
       const {data} = await newUser({variables: { ...newFormState}});
-      console.log(data);
       Auth.login(data.addUser.token);
     } catch (e) {
       console.error(e);

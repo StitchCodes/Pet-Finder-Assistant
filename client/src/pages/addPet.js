@@ -92,7 +92,7 @@ const AddPetForm = () => {
   // Submit Form function for addPlacard
   const handleFormSubmit = async (event) => {
     try {
-      const placardAuthorData = Auth.getUser().data._id;
+      const placardAuthorData = Auth.getUser()._id;
       setFormState({ ...formState, placardAuthor: placardAuthorData });
       const { data } = await addPlacard({
         variables: { ...formState },
@@ -100,7 +100,7 @@ const AddPetForm = () => {
       if (!data) {
         throw new Error("something went wrong!");
       }
-      console.log("form subrmit", formState);
+      console.log("FORM SUBMIT", formState);
     } catch (e) {
       console.error(e);
     }
